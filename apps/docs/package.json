@@ -1,5 +1,5 @@
 {
-  "name": "docs",
+	"name": "docs",
 	"version": "0.0.1",
 	"private": true,
 	"type": "module",
@@ -15,7 +15,7 @@
 		"test:unit": "vitest"
 	},
 	"dependencies": {
-		"@repo/ui": "workspace:*"
+		"@glixy/core": "workspace:*"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.42.1",

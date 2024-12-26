@@ -1,0 +1,30 @@
+{
+	"extends": "./.svelte-kit/tsconfig.json",
+	"compilerOptions": {
+		"allowJs": true,
+		"checkJs": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"strict": true,
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext"
+	},
+	"exclude": [
+		"node_modules",
+		"dist",
+		".svelte-kit",
+		"*.js",
+		"*.cjs",
+		"*.mjs",
+		"*.svelte",
+		"*.ts",
+		"*.tsx",
+		"*.d.ts",
+		"*.svx",
+		"*.md"
+	],
+	"include": ["src", "types"]
+}
