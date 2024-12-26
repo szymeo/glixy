@@ -11,16 +11,16 @@
 		bind:this={host}
 		bind:clientWidth={hostWidth}
 		bind:clientHeight={hostHeight}
-		class="w-full h-96 relative border border-slate-700/60 rounded-3xl overflow-hidden"
+		class="relative h-96 w-full overflow-hidden rounded-3xl border border-slate-700/60"
 	>
-		<div class="flex items-center justify-start gap-2 absolute w-full p-4">
+		<div class="absolute flex w-full items-center justify-start gap-2 p-4">
 			<!-- onclick={() => (codeVisible = !codeVisible)} -->
 			<button
-				class="w-10 h-10 bg-slate-700 hover:bg-slate-800 shadow rounded-full flex items-center justify-center"
+				class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-700 shadow hover:bg-slate-800"
 				title="Show code"
 			>
 				<svg
-					class="w-5 h-5"
+					class="h-5 w-5"
 					viewBox="0 0 24 24"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +45,7 @@
 		</div>
 
 		{#if host}
-			{@render children({ host, hostWidth, hostHeight })}
+			{@render children(host, hostWidth, hostHeight)}
 		{/if}
 	</div>
 </div>

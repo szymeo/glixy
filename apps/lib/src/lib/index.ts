@@ -1,1 +1,1 @@
-export * from './elements/index.js';
+export * from '@glixy/core';

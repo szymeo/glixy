@@ -2,14 +2,13 @@
 	// import Example from './Example.svelte';
 	import Header from './Header.svelte';
 	import Features from './Features.svelte';
+	import BasicSprite from './_examples/BasicSprite.svelte';
 </script>
 
 <div class="mx-auto h-full w-10/12 max-w-4xl py-4">
 	<Header />
 
-	<!-- <Example /> -->
-
-	<Features />
+	<BasicSprite />
 
 	<footer class="pb-10">
 		<p class="mt-8 text-center text-sm text-gray-300">

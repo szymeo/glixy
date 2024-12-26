@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getContext, setContext, type Snippet } from 'svelte';
 	import { Application, Container } from 'pixi.js';
-	import { isDefined } from '$lib/utils/index.js';
+	import { isDefined } from '../utils/index.js';
 
 	type Props = {
 		x: number;
@@ -10,7 +10,8 @@
 		anchor?: { x: number; y: number };
 	};
 
-	const { children, ...instanceProps }: { children: Snippet } & Props = $props();
+	const { children, ...instanceProps }: { children: Snippet } & Props =
+		$props();
 	const container = new Container();
 	const { stage } = getContext<Application>('sveltegl_app');
 	const parentContainer = getContext<Container>('sveltegl_container');
