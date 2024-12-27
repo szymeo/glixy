@@ -9,7 +9,7 @@
 	<div class="py-10">
 		<Header>
 			<p class="text-lg font-semibold text-slate-500/80">
-				Experience the comfort of building WebGL interfaces worth <span
+				Experience the comfort of building 2D WebGL interfaces worth <span
 					class="font-bold italic text-purple-600"
 				>
 					sucking off
