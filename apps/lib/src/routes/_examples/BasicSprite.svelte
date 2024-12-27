@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Container, Sprite, Stage } from 'glixy';
+	import { Container, Sprite, Stage } from '$lib/index.js';
 	import Example from './Example.svelte';
 </script>
 
