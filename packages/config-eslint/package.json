@@ -1,5 +1,6 @@
 {
 	"name": "@glixy/eslint-config",
+	"private": true,
 	"version": "0.0.0",
 	"dependencies": {
 		"@typescript-eslint/eslint-plugin": "^7.1.0",
