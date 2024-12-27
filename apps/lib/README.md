@@ -1,8 +1,8 @@
 # Glixy
 
-`glixy` is a Svelte library for building WebGL applications with ease. It provides delightful abstraction over the PixiJS in Svelte, to create and manage WebGL contexts, containers, and sprites.
+`glixy` is a Svelte library with delightful abstraction for building PixiJS applications with ease.
 
-### [Live demo](https://glixy.dev)
+### [Live demo](https://www.glixy.dev)
 
 ## Installation
 
