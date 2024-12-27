@@ -32,15 +32,15 @@
 		onmouseover,
 		onmouseout,
 	}: Props = $props();
-	const parentContainer = getContext<Container>('sveltegl_container');
-	const parentApp = getContext<Application>('sveltegl_app');
+	const parentContainer = getContext<Container>('glixy_container');
+	const parentApp = getContext<Application>('glixy_app');
 
 	if (!parentContainer && !parentApp) {
 		throw new Error('Sprite must be a child of a Container or Application.');
 	}
 
 	const sprite = new Sprite();
-	const markDirty = getContext<() => void>('sveltegl_markdirty');
+	const markDirty = getContext<() => void>('glixy_markdirty');
 
 	$effect(() => {
 		sprite.interactive = !!(onmouseover || onmouseout);

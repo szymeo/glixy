@@ -1,12 +1,12 @@
 <script lang="ts">
-	// import Example from './Example.svelte';
 	import Header from './Header.svelte';
 	import Features from './Features.svelte';
-	import BasicSprite from './_examples/BasicSprite.svelte';
+	import BasicSprite from '../lib/examples/RotateSpriteExample.svelte';
+	import Footer from '$lib/components/Footer.svelte';
 </script>
 
-<div class="mx-auto h-full w-10/12 max-w-4xl py-4">
-	<div class="py-10">
+<div class="mx-auto h-full w-11/12 max-w-4xl py-10">
+	<div class="mb-8 sm:px-2">
 		<Header>
 			<p class="text-lg font-semibold text-slate-500/80">
 				Experience the comfort of building 2D WebGL interfaces worth <span
@@ -23,10 +23,10 @@
 
 	<Features />
 
-	<div class="mt-20 flex h-44 w-full text-2xl">
+	<div class="mt-14 flex w-full text-2xl">
 		<a
 			href="/docs/installation"
-			class="h-fit w-full cursor-pointer rounded-xl p-4 px-6 font-semibold ring-1 ring-gray-300 transition-all hover:bg-gray-50 hover:text-purple-600"
+			class="h-full w-full cursor-pointer rounded-xl p-4 px-6 font-semibold ring-1 ring-gray-300 transition-all hover:bg-gray-50 hover:text-purple-600"
 		>
 			Next Chapter -&gt;
 
@@ -34,15 +34,5 @@
 		</a>
 	</div>
 
-	<footer class="pb-10">
-		<p class="mt-8 text-center text-base text-gray-500">
-			Made with ❤️ by <a
-				href="https://github.com/szymeo"
-				target="_blank"
-				class="font-semibold text-purple-600"
-			>
-				@szymeo
-			</a>
-		</p>
-	</footer>
+	<Footer />
 </div>

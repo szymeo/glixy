@@ -13,15 +13,15 @@
 	const { children, ...instanceProps }: { children: Snippet } & Props =
 		$props();
 	const container = new Container();
-	const { stage } = getContext<Application>('sveltegl_app');
-	const parentContainer = getContext<Container>('sveltegl_container');
-	const markDirty = getContext<() => void>('sveltegl_markdirty');
+	const { stage } = getContext<Application>('glixy_app');
+	const parentContainer = getContext<Container>('glixy_container');
+	const markDirty = getContext<() => void>('glixy_markdirty');
 
 	if (!stage && !parentContainer) {
 		throw new Error('Container must be a child of a Container or Application.');
 	}
 
-	setContext('sveltegl_container', container);
+	setContext('glixy_container', container);
 
 	$effect(() => {
 		(parentContainer || stage).addChild(container);

@@ -3,24 +3,27 @@
 	import { Application as PixiApp } from 'pixi.js';
 
 	type ApplicationInitArguments = Parameters<PixiApp['init']>;
-	type Props = { children: Snippet; host: HTMLElement } & ApplicationInitArguments[0];
+	type Props = {
+		children: Snippet;
+		host: HTMLElement;
+	} & ApplicationInitArguments[0];
 
 	const { children, host, ...appInitProps }: Props = $props();
 	const app = new PixiApp();
-	const parent = getContext('sveltegl_app');
+	const parentApp = getContext('glixy_app');
 	let rendered = $state(false);
 	let isDirty = true;
 
-	if (parent) {
-		throw new Error('Nested SvelteGL applications are not supported.');
+	if (parentApp) {
+		throw new Error('Nested Glixy applications are not supported.');
 	}
 
-	setContext('sveltegl_app', app);
-	setContext('sveltegl_markdirty', () => (isDirty = true));
+	setContext('glixy_app', app);
+	setContext('glixy_markdirty', () => (isDirty = true));
 
 	$effect(() => {
 		if (!host) {
-			console.warn('[SvelteGL/Application] Host property not set.');
+			console.warn('[Glixy/Application] Host property not set.');
 			return;
 		}
 

@@ -14,3 +14,25 @@ html {
 	font-family: 'Overlock', ui-sans-serif, system-ui, sans-serif,
 		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+@layer components {
+	.btn {
+		@apply inline-flex h-10 items-center justify-center whitespace-nowrap rounded-full border border-transparent px-4 font-medium shadow-sm;
+	}
+
+	.icon-btn {
+		@apply flex h-10 w-10 items-center justify-center rounded-full shadow;
+	}
+
+	.btn-primary {
+		@apply bg-slate-700 text-white hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-purple-600;
+	}
+
+	.code-snippet {
+		@apply relative max-w-full overflow-hidden overflow-x-auto rounded-2xl border border-gray-300 bg-gray-100;
+
+		& > code.hljs {
+			@apply bg-gray-100 p-8;
+		}
+	}
+}
