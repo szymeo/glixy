@@ -56,6 +56,6 @@
 		"vite": "^5.4.11"
 	},
 	"dependencies": {
-		"glixy-core": "workspace:*"
+		"glixy": "workspace:*"
 	}
 }
