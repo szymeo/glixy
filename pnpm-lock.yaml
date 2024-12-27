@@ -23,9 +23,9 @@ importers:
 
   apps/docs:
     dependencies:
-      glixy-core:
+      glixy:
         specifier: workspace:*
-        version: link:../../packages/glixy
+        version: link:../lib
     devDependencies:
       '@glixy/eslint-config':
         specifier: workspace:*
@@ -78,9 +78,9 @@ importers:
 
   apps/lib:
     dependencies:
-      glixy-core:
-        specifier: workspace:*
-        version: link:../../packages/glixy
+      pixi.js:
+        specifier: ^8.6.6
+        version: 8.6.6
     devDependencies:
       '@eslint/compat':
         specifier: ^1.2.3
@@ -160,19 +160,6 @@ importers:
       eslint-plugin-svelte:
         specifier: ^2.35.1
         version: 2.35.1(eslint@9.17.0(jiti@1.21.7))(svelte@4.2.12)
-
-  packages/glixy:
-    dependencies:
-      pixi.js:
-        specifier: ^8.6.6
-        version: 8.6.6
-    devDependencies:
-      '@glixy/eslint-config':
-        specifier: workspace:*
-        version: link:../config-eslint
-      svelte:
-        specifier: ^5.16.0
-        version: 5.16.0
 
 packages:
 
