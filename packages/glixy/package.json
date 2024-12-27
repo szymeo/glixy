@@ -1,6 +1,5 @@
 {
-	"name": "glixy-core",
-	"private": true,
+	"name": "glixy",
 	"version": "0.0.1",
 	"type": "module",
 	"module": "index.ts",
