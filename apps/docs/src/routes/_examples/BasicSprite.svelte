@@ -2,7 +2,6 @@
 	import { Container, Sprite, Stage } from 'glixy';
 	import Example from './Example.svelte';
 	import { HighlightAuto } from 'svelte-highlight';
-	import atomOneDark from 'svelte-highlight/styles/atom-one-light';
 </script>
 
 {#snippet bunny(x: number, y: number)}
@@ -13,10 +12,6 @@
 		{y}
 	/>
 {/snippet}
-
-<svelte:head>
-	{@html atomOneDark}
-</svelte:head>
 
 <Example>
 	{#snippet children(host: HTMLElement, hostWidth: number, hostHeight: number)}

@@ -3,11 +3,21 @@
 	import Header from './Header.svelte';
 	import Features from './Features.svelte';
 	import BasicSprite from './_examples/BasicSprite.svelte';
-	import Installation from '$lib/components/Installation.svelte';
 </script>
 
 <div class="mx-auto h-full w-10/12 max-w-4xl py-4">
-	<Header />
+	<div class="py-10">
+		<Header>
+			<p class="text-lg font-semibold text-slate-500/80">
+				Experience the comfort of building WebGL interfaces worth <span
+					class="font-bold italic text-purple-600"
+				>
+					sucking off
+				</span>
+				to a friend.
+			</p>
+		</Header>
+	</div>
 
 	<BasicSprite />
 
@@ -15,6 +25,7 @@
 
 	<div class="mt-20 flex h-44 w-full text-2xl">
 		<a
+			href="/docs/installation"
 			class="h-fit w-full cursor-pointer rounded-xl p-4 px-6 font-semibold ring-1 ring-gray-300 transition-all hover:bg-gray-50 hover:text-purple-600"
 		>
 			Next Chapter -&gt;
