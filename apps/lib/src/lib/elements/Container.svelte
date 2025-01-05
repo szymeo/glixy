@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { getContext, setContext, type Snippet } from 'svelte';
+	import { ContextKey } from '$lib/types/context-key.enum.js';
 	import { Application, Container } from 'pixi.js';
+	import { getContext, setContext, type Snippet } from 'svelte';
 	import { isDefined } from '../utils/index.js';
 
 	type Props = {
@@ -13,21 +14,23 @@
 	const { children, ...instanceProps }: { children: Snippet } & Props =
 		$props();
 	const container = new Container();
-	const { stage } = getContext<Application>('glixy_app');
-	const parentContainer = getContext<Container>('glixy_container');
-	const markDirty = getContext<() => void>('glixy_markdirty');
+	const stage = getContext<Application>(ContextKey.STAGE)?.stage;
+	const parentContainer =
+		getContext<Container>(ContextKey.PARENT_CONTAINER) || stage;
 
-	if (!stage && !parentContainer) {
-		throw new Error('Container must be a child of a Container or Application.');
+	if (!parentContainer) {
+		throw new Error('Container must have a parent.');
 	}
 
-	setContext('glixy_container', container);
+	const markDirty = getContext<() => void>(ContextKey.MARK_DIRTY);
+
+	setContext(ContextKey.PARENT_CONTAINER, container);
 
 	$effect(() => {
-		(parentContainer || stage).addChild(container);
+		parentContainer.addChild(container);
 
 		return () => {
-			(parentContainer || stage).removeChild(container);
+			parentContainer.removeChild(container);
 			container.destroy({ children: true });
 		};
 	});

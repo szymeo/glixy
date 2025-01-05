@@ -1,6 +1,7 @@
 <script lang="ts">
+	import { ContextKey } from '$lib/types/context-key.enum.js';
+	import { Application as PixiApp, Assets as PixiAssets } from 'pixi.js';
 	import { getContext, setContext, type Snippet } from 'svelte';
-	import { Application as PixiApp } from 'pixi.js';
 
 	type ApplicationInitArguments = Parameters<PixiApp['init']>;
 	type Props = {
@@ -18,12 +19,14 @@
 		throw new Error('Nested Glixy applications are not supported.');
 	}
 
-	setContext('glixy_app', app);
-	setContext('glixy_markdirty', () => (isDirty = true));
+	setContext(ContextKey.STAGE, app);
+	setContext(ContextKey.MARK_DIRTY, () => {
+		isDirty = true;
+	});
 
 	$effect(() => {
 		if (!host) {
-			console.warn('[Glixy/Application] Host property not set.');
+			console.warn('[Glixy/Stage] Host property not set.');
 			return;
 		}
 
@@ -38,7 +41,15 @@
 			isDirty = false;
 		};
 
-		app.init(appInitProps).then(() => {
+		Promise.all([
+			app.init({
+				...appInitProps,
+				resolution: window.devicePixelRatio,
+				autoDensity: true,
+			}),
+			PixiAssets.load('font.svg'),
+			PixiAssets.load('lato.xml'),
+		]).then(() => {
 			app.ticker.autoStart = false;
 			app.ticker.stop();
 			host.appendChild(app.canvas);
