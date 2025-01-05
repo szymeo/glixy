@@ -1,6 +1,6 @@
 # Glixy
 
-`glixy` is a Svelte library with delightful abstraction for building PixiJS applications with ease.
+`glixy` is a Svelte library with delightful (and leaky :P) abstraction for building PixiJS applications with ease.
 
 ### [Live demo](https://www.glixy.dev)
 
