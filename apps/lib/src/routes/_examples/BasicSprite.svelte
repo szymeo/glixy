@@ -44,7 +44,7 @@
 
 <Example>
 	{#snippet children(host: HTMLElement, hostWidth: number, hostHeight: number)}
-		<Stage {host} resizeTo={host} background="#111111" antialias={true}>
+		<Stage {host} background="#111111" antialias={true}>
 			{@render bunny(hostWidth - 100, hostHeight - 100, rotation)}
 
 			<Container x={100} y={hostHeight - 100} rotation={rotation * -0.042}>

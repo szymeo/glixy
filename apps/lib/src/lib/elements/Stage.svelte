@@ -4,10 +4,13 @@
 	import { getContext, setContext, type Snippet } from 'svelte';
 
 	type ApplicationInitArguments = Parameters<PixiApp['init']>;
-	type Props = {
-		children: Snippet;
-		host: HTMLElement;
-	} & ApplicationInitArguments[0];
+	type Props = Omit<
+		{
+			children: Snippet;
+			host: HTMLElement;
+		} & ApplicationInitArguments[0],
+		'resizeTo'
+	>;
 
 	const { children, host, ...appInitProps }: Props = $props();
 	const app = new PixiApp();
@@ -44,8 +47,9 @@
 		Promise.all([
 			app.init({
 				...appInitProps,
-				resolution: window.devicePixelRatio,
-				autoDensity: true,
+				resizeTo: host,
+				resolution: appInitProps.resolution ?? window.devicePixelRatio,
+				autoDensity: appInitProps.autoDensity ?? true,
 			}),
 		]).then(() => {
 			app.ticker.autoStart = false;
