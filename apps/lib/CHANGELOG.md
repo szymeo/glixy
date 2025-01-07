@@ -1,10 +1,16 @@
 # glixy
 
+## 0.0.8
+
+### Patch Changes
+
+- 3d93681: feat: add z-index to Sprite
+
 ## 0.0.7
 
 ### Patch Changes
 
-- cf8b062: feat: deprecate Stage#resizeTo in favor of Stage#host
+- cf8b062: feat: deprecate Stage#resizeTo in favour of Stage#host
 
 ## 0.0.6
 
