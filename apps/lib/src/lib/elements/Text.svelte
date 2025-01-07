@@ -5,6 +5,7 @@
 	import type { CornerRadiusComponent } from '$lib/types/components/corner-radius.component.js';
 	import type { DimensionsComponent } from '$lib/types/components/dimensions.component.js';
 	import type { InteractionsComponent } from '$lib/types/components/interactions.component.js';
+	import type { OpacityComponent } from '$lib/types/components/opacity.component.js';
 	import type { ScaleComponent } from '$lib/types/components/scale.component.js';
 	import type { TextComponent } from '$lib/types/components/text.component.js';
 	import type { TransformComponent } from '$lib/types/components/transform.component.js';
@@ -19,6 +20,7 @@
 		z = 0,
 		width = 0,
 		height = 0,
+		opacity = 1,
 		scale = { x: 1, y: 1 },
 		text,
 		style = {
@@ -39,7 +41,8 @@
 				BackgroundComponent &
 				BorderComponent &
 				ZIndexComponent &
-				AnchorComponent
+				AnchorComponent &
+				OpacityComponent
 		> = $props();
 	const stage = getContext<Application>(ContextKey.STAGE)?.stage;
 	const parentContainer =
@@ -98,6 +101,7 @@
 	$effect(withMarkDirty(() => (entity.y = y)));
 	$effect(withMarkDirty(() => (entity.rotation = rotation)));
 	$effect(withMarkDirty(() => (entity.zIndex = z)));
+	$effect(withMarkDirty(() => (entity.alpha = opacity)));
 
 	function withMarkDirty(fn: () => void) {
 		return () => {
