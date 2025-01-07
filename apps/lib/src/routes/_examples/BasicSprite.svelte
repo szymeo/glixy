@@ -7,9 +7,19 @@
 		Rectangle,
 		Text,
 	} from '$lib/index.js';
+	import { onMount } from 'svelte';
 	import Example from './Example.svelte';
 
 	let rotation = $state(0);
+	let opacity = $state(1);
+
+	onMount(() => {
+		const clean = setInterval(() => {
+			opacity = Math.sin(Date.now() / 1000) / 2 + 0.5;
+		}, 1000 / 60);
+
+		return () => clearInterval(clean);
+	});
 
 	$effect(() => {
 		const clean = setInterval(() => {
@@ -22,6 +32,7 @@
 
 {#snippet bunny(x: number, y: number, rotation: number)}
 	<Sprite
+		{opacity}
 		anchor={{ x: 0.5, y: 0.5 }}
 		scale={{ x: 1.5, y: 1.5 }}
 		texture="https://pixijs.com/assets/bunny.png"

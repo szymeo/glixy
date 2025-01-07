@@ -11,7 +11,7 @@
 
 	const { children, host, ...appInitProps }: Props = $props();
 	const app = new PixiApp();
-	const parentApp = getContext('glixy_app');
+	const parentApp = getContext(ContextKey.STAGE);
 	let rendered = $state(false);
 	let isDirty = true;
 
@@ -47,8 +47,6 @@
 				resolution: window.devicePixelRatio,
 				autoDensity: true,
 			}),
-			PixiAssets.load('font.svg'),
-			PixiAssets.load('lato.xml'),
 		]).then(() => {
 			app.ticker.autoStart = false;
 			app.ticker.stop();
