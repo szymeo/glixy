@@ -7,6 +7,7 @@
 		ScaleComponent,
 		TextureComponent,
 		TransformComponent,
+		ZIndexComponent,
 	} from '$lib/types/components/index.js';
 	import { ContextKey } from '$lib/types/context-key.enum.js';
 	import { Application, Assets, Container, Sprite } from 'pixi.js';
@@ -15,6 +16,7 @@
 	const {
 		x = 0,
 		y = 0,
+		z = 0,
 		width = 0,
 		height = 0,
 		rotation = 0,
@@ -31,7 +33,8 @@
 			ScaleComponent &
 			TextureComponent &
 			AnchorComponent &
-			InteractionsComponent
+			InteractionsComponent &
+			ZIndexComponent
 	> = $props();
 
 	const stage = getContext<Application>(ContextKey.STAGE)?.stage;
@@ -91,6 +94,7 @@
 	$effect(withMarkDirty(() => (sprite.y = y)));
 	$effect(withMarkDirty(() => (sprite.rotation = rotation)));
 	$effect(withMarkDirty(() => (sprite.alpha = opacity)));
+	$effect(withMarkDirty(() => (sprite.zIndex = z)));
 
 	function withMarkDirty(fn: () => void) {
 		return () => {

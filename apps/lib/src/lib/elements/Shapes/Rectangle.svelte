@@ -16,6 +16,7 @@
 	const {
 		x = 0,
 		y = 0,
+		z = 0,
 		width,
 		height,
 		rotation = 0,
@@ -25,7 +26,6 @@
 		background = { color: 0, opacity: 1 },
 		border = { color: 0, width: 0, rounded: false, opacity: 1 },
 		cornerRadius = 0,
-		zIndex = 0,
 	}: DimensionsComponent &
 		Partial<
 			TransformComponent &
@@ -93,7 +93,7 @@
 	);
 	$effect(withMarkDirty(() => (graphics.rotation = rotation)));
 	$effect(withMarkDirty(() => (graphics.rotation = rotation)));
-	$effect(withMarkDirty(() => (graphics.zIndex = zIndex)));
+	$effect(withMarkDirty(() => (graphics.zIndex = z)));
 
 	function withMarkDirty(fn: () => void) {
 		return () => {

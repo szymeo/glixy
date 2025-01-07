@@ -16,6 +16,7 @@
 	const {
 		x = 0,
 		y = 0,
+		z = 0,
 		width = 0,
 		height = 0,
 		scale = { x: 1, y: 1 },
@@ -29,7 +30,6 @@
 		},
 		rotation = 0,
 		anchor = { x: 0, y: 0 },
-		zIndex = 0,
 	}: TextComponent &
 		Partial<
 			TransformComponent &
@@ -97,7 +97,7 @@
 	$effect(withMarkDirty(() => (entity.x = x)));
 	$effect(withMarkDirty(() => (entity.y = y)));
 	$effect(withMarkDirty(() => (entity.rotation = rotation)));
-	$effect(withMarkDirty(() => (entity.zIndex = zIndex)));
+	$effect(withMarkDirty(() => (entity.zIndex = z)));
 
 	function withMarkDirty(fn: () => void) {
 		return () => {
