@@ -64,10 +64,10 @@
 					weight: 'bold',
 					style: 'normal',
 				}}
-				z={10}
 				scale={{ x: 0.5, y: 0.5 }}
 				x={10}
 				y={10}
+				z={10}
 			/>
 
 			<Rectangle
