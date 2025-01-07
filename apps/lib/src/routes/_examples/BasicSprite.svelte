@@ -1,24 +1,29 @@
 <script lang="ts">
-	import Star from '$lib/elements/Shapes/Star.svelte';
-	import Rectangle from '$lib/elements/Shapes/Rectangle.svelte';
-	import Text from '$lib/elements/Text.svelte';
-	import { Container, Sprite, Stage } from '$lib/index.js';
+	import {
+		Container,
+		Sprite,
+		Stage,
+		Star,
+		Rectangle,
+		Text,
+	} from '$lib/index.js';
 	import Example from './Example.svelte';
 
 	let rotation = $state(0);
 
 	$effect(() => {
 		const clean = setInterval(() => {
-			rotation += 0.15;
-		}, 1000);
+			rotation += 0.069;
+		}, 1000 / 60);
 
 		return () => clearInterval(clean);
 	});
 </script>
 
-{#snippet bunny(x: number, y: number)}
+{#snippet bunny(x: number, y: number, rotation: number)}
 	<Sprite
 		anchor={{ x: 0.5, y: 0.5 }}
+		scale={{ x: 1.5, y: 1.5 }}
 		texture="https://pixijs.com/assets/bunny.png"
 		{x}
 		{y}
@@ -29,12 +34,24 @@
 <Example>
 	{#snippet children(host: HTMLElement, hostWidth: number, hostHeight: number)}
 		<Stage {host} resizeTo={host} background="#111111" antialias={true}>
-			<Container x={0} y={hostHeight / 2}>
-				{@render bunny(hostWidth / 2, 0)}
+			{@render bunny(hostWidth - 100, hostHeight - 100, rotation)}
+
+			<Container x={100} y={hostHeight - 100} rotation={rotation * -0.042}>
+				{@render bunny(0, 0, 20)}
+				{@render bunny(40, 0, 40)}
+				{@render bunny(0, 40, 50)}
+				{@render bunny(40, 40, 90)}
 			</Container>
 
 			<Text
 				text="Hello Glixy ✨"
+				style={{
+					font: 'Overlock',
+					color: 0xffffff,
+					size: 256,
+					weight: 'bold',
+					style: 'normal',
+				}}
 				zIndex={10}
 				scale={{ x: 0.5, y: 0.5 }}
 				x={10}

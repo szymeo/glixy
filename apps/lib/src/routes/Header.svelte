@@ -1,9 +1,9 @@
 <div class="py-10">
 	<div class="flex items-center justify-between">
 		<h1
-			class="w-fit bg-gradient-to-r from-amber-500 to-red-500 bg-clip-text text-5xl font-bold text-transparent"
+			class="w-fit bg-gradient-to-r from-amber-500 to-red-500 bg-clip-text text-5xl font-bold leading-normal text-transparent"
 		>
-			Glixy examples
+			Glixy Playground
 		</h1>
 
 		<a
@@ -55,7 +55,7 @@
 		</a>
 	</div>
 
-	<p class="text-lg font-semibold text-slate-400/80">
-		Examples of how to use Glixy with different Svelte components.
+	<p class="text-lg font-semibold text-slate-400/90">
+		Experiment with Glixy unreleased features and see how it works 🔥
 	</p>
 </div>

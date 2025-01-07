@@ -1,31 +1,46 @@
 <script lang="ts">
+	import type { AnchorComponent } from '$lib/types/components/anchor.component.js';
+	import type { BackgroundComponent } from '$lib/types/components/background.component.js';
+	import type { BorderComponent } from '$lib/types/components/border.component.js';
+	import type { CornerRadiusComponent } from '$lib/types/components/corner-radius.component.js';
+	import type { DimensionsComponent } from '$lib/types/components/dimensions.component.js';
+	import type { InteractionsComponent } from '$lib/types/components/interactions.component.js';
+	import type { ScaleComponent } from '$lib/types/components/scale.component.js';
+	import type { TextComponent } from '$lib/types/components/text.component.js';
+	import type { TransformComponent } from '$lib/types/components/transform.component.js';
+	import type { ZIndexComponent } from '$lib/types/components/z-index.component.js';
 	import { ContextKey } from '$lib/types/context-key.enum.js';
 	import { Application, Assets, Container, Text as PixiText } from 'pixi.js';
 	import { getContext } from 'svelte';
 
-	type Props = Partial<{
-		x: number;
-		y: number;
-		width: number;
-		height: number;
-		rotation: number;
-		scale: { x: number; y: number };
-		anchor: { x: number; y: number };
-		zIndex: number;
-	}> & {
-		text: string;
-	};
 	const {
 		x = 0,
 		y = 0,
 		width = 0,
 		height = 0,
-		text,
-		rotation = 0,
 		scale = { x: 1, y: 1 },
+		text,
+		style = {
+			font: 'Arial',
+			weight: 'normal',
+			size: 12,
+			color: 0x000000,
+			style: 'normal',
+		},
+		rotation = 0,
 		anchor = { x: 0, y: 0 },
 		zIndex = 0,
-	}: Props = $props();
+	}: TextComponent &
+		Partial<
+			TransformComponent &
+				DimensionsComponent &
+				ScaleComponent &
+				InteractionsComponent &
+				BackgroundComponent &
+				BorderComponent &
+				ZIndexComponent &
+				AnchorComponent
+		> = $props();
 	const stage = getContext<Application>(ContextKey.STAGE)?.stage;
 	const parentContainer =
 		getContext<Container>(ContextKey.PARENT_CONTAINER) || stage;
@@ -36,13 +51,15 @@
 
 	const markDirty = getContext<() => void>(ContextKey.MARK_DIRTY);
 
-	const sprite = new PixiText({
+	const entity = new PixiText({
 		text,
+		anchor,
 		style: {
-			fontFamily: 'Overlock',
-			fontWeight: 'bold',
-			fontSize: 264,
-			fill: 0xffffff,
+			fontFamily: style.font,
+			fontWeight: style.weight,
+			fontSize: style.size,
+			fill: style.color,
+			fontStyle: style.style,
 		},
 	});
 
@@ -61,26 +78,26 @@
 	// });
 
 	$effect(() => {
-		parentContainer.addChild(sprite);
+		parentContainer.addChild(entity);
 		markDirty();
 
 		return () => {
-			parentContainer.removeChild(sprite);
-			sprite.destroy();
+			parentContainer.removeChild(entity);
+			entity.destroy();
 			markDirty();
 		};
 	});
 
-	$effect(withMarkDirty(() => (sprite.anchor.x = anchor.x)));
-	$effect(withMarkDirty(() => (sprite.anchor.y = anchor.y)));
-	$effect(withMarkDirty(() => (sprite.width = width)));
-	$effect(withMarkDirty(() => (sprite.height = height)));
-	$effect(withMarkDirty(() => (sprite.scale.x = scale.x)));
-	$effect(withMarkDirty(() => (sprite.scale.y = scale.y)));
-	$effect(withMarkDirty(() => (sprite.x = x)));
-	$effect(withMarkDirty(() => (sprite.y = y)));
-	$effect(withMarkDirty(() => (sprite.rotation = rotation)));
-	$effect(withMarkDirty(() => (sprite.zIndex = zIndex)));
+	$effect(withMarkDirty(() => (entity.anchor.x = anchor.x)));
+	$effect(withMarkDirty(() => (entity.anchor.y = anchor.y)));
+	$effect(withMarkDirty(() => (entity.width = width)));
+	$effect(withMarkDirty(() => (entity.height = height)));
+	$effect(withMarkDirty(() => (entity.scale.x = scale.x)));
+	$effect(withMarkDirty(() => (entity.scale.y = scale.y)));
+	$effect(withMarkDirty(() => (entity.x = x)));
+	$effect(withMarkDirty(() => (entity.y = y)));
+	$effect(withMarkDirty(() => (entity.rotation = rotation)));
+	$effect(withMarkDirty(() => (entity.zIndex = zIndex)));
 
 	function withMarkDirty(fn: () => void) {
 		return () => {
