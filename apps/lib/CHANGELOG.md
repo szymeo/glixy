@@ -10,7 +10,7 @@
 
 ### Patch Changes
 
-- cf8b062: feat: deprecate Stage#resizeTo in favor of Stage#host
+- cf8b062: feat: deprecate Stage#resizeTo in favour of Stage#host
 
 ## 0.0.6
 
