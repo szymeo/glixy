@@ -1,5 +1,11 @@
 # glixy
 
+## 0.0.8
+
+### Patch Changes
+
+- 3d93681: feat: add z-index to Sprite
+
 ## 0.0.7
 
 ### Patch Changes
