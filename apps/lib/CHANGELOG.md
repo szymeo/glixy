@@ -1,5 +1,11 @@
 # glixy
 
+## 0.0.6
+
+### Patch Changes
+
+- 6f53cb7: fix: rm imports
+
 ## 0.0.5
 
 ### Patch Changes
