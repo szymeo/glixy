@@ -3,6 +3,7 @@
 		AnchorComponent,
 		DimensionsComponent,
 		InteractionsComponent,
+		OpacityComponent,
 		ScaleComponent,
 		TextureComponent,
 		TransformComponent,
@@ -17,13 +18,15 @@
 		width = 0,
 		height = 0,
 		rotation = 0,
+		opacity = 1,
 		scale = { x: 1, y: 1 },
 		texture,
 		anchor = { x: 0, y: 0 },
 		onmouseover,
 		onmouseout,
 	}: Partial<
-		TransformComponent &
+		OpacityComponent &
+			TransformComponent &
 			DimensionsComponent &
 			ScaleComponent &
 			TextureComponent &
@@ -87,6 +90,7 @@
 	$effect(withMarkDirty(() => (sprite.x = x)));
 	$effect(withMarkDirty(() => (sprite.y = y)));
 	$effect(withMarkDirty(() => (sprite.rotation = rotation)));
+	$effect(withMarkDirty(() => (sprite.alpha = opacity)));
 
 	function withMarkDirty(fn: () => void) {
 		return () => {

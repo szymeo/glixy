@@ -26,6 +26,7 @@
 		onmouseout,
 		background = { color: 0, opacity: 1 },
 		border = { color: 0, width: 0, rounded: false, opacity: 1 },
+		// todo: render with cornerRadius
 		cornerRadius = 0,
 		zIndex = 0,
 	}: StarDimensionsComponent &
