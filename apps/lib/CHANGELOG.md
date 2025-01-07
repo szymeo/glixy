@@ -1,5 +1,11 @@
 # glixy
 
+## 0.0.7
+
+### Patch Changes
+
+- cf8b062: docs: deprecate Stage#resizeTo in favor of Stage#host
+
 ## 0.0.6
 
 ### Patch Changes
