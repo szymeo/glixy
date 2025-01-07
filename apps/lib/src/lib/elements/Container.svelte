@@ -1,18 +1,21 @@
 <script lang="ts">
+	import type {
+		AnchorComponent,
+		TransformComponent,
+	} from '$lib/types/components/index.js';
 	import { ContextKey } from '$lib/types/context-key.enum.js';
 	import { Application, Container } from 'pixi.js';
 	import { getContext, setContext, type Snippet } from 'svelte';
-	import { isDefined } from '../utils/index.js';
 
-	type Props = {
-		x: number;
-		y: number;
-		rotation?: number;
-		anchor?: { x: number; y: number };
-	};
-
-	const { children, ...instanceProps }: { children: Snippet } & Props =
-		$props();
+	const {
+		x = 0,
+		y = 0,
+		rotation = 0,
+		anchor = { x: 0, y: 0 },
+		children,
+	}: { children: Snippet } & Partial<
+		TransformComponent & AnchorComponent
+	> = $props();
 	const container = new Container();
 	const stage = getContext<Application>(ContextKey.STAGE)?.stage;
 	const parentContainer =
@@ -35,29 +38,18 @@
 		};
 	});
 
-	$effect(() => {
-		if (!isDefined(instanceProps.x) && !isDefined(instanceProps.y)) {
-			return;
-		}
-		container.position.set(instanceProps.x ?? 0, instanceProps.y ?? 0);
-		markDirty();
-	});
+	$effect(withMarkDirty(() => (container.x = x)));
+	$effect(withMarkDirty(() => (container.y = y)));
+	$effect(withMarkDirty(() => (container.rotation = rotation)));
+	$effect(withMarkDirty(() => (container.pivot.x = anchor.x)));
+	$effect(withMarkDirty(() => (container.pivot.y = anchor.y)));
 
-	$effect(() => {
-		if (!isDefined(instanceProps.rotation)) {
-			return;
-		}
-		container.rotation = instanceProps.rotation!;
-		markDirty();
-	});
-
-	$effect(() => {
-		if (!instanceProps.anchor) {
-			return;
-		}
-		container.pivot.set(instanceProps.anchor.x, instanceProps.anchor.y);
-		markDirty();
-	});
+	function withMarkDirty(fn: () => void) {
+		return () => {
+			fn();
+			markDirty();
+		};
+	}
 </script>
 
 {@render children()}

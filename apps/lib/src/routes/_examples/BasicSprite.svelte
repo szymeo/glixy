@@ -38,6 +38,7 @@
 		texture="https://pixijs.com/assets/bunny.png"
 		{x}
 		{y}
+		z={0}
 		{rotation}
 	/>
 {/snippet}
@@ -63,7 +64,7 @@
 					weight: 'bold',
 					style: 'normal',
 				}}
-				zIndex={10}
+				z={10}
 				scale={{ x: 0.5, y: 0.5 }}
 				x={10}
 				y={10}
@@ -90,7 +91,7 @@
 			<Star
 				x={hostWidth / 2}
 				y={hostHeight / 3}
-				zIndex={10}
+				z={10}
 				size={50}
 				innerSize={23}
 				points={5}
