@@ -24,8 +24,8 @@ importers:
   apps/docs:
     dependencies:
       glixy:
-        specifier: ^0.0.3
-        version: 0.0.3(svelte@5.16.0)
+        specifier: ^0.0.6
+        version: 0.0.6(svelte@5.16.0)
       highlight.js:
         specifier: ^11.11.1
         version: 11.11.1
@@ -1363,8 +1363,8 @@ packages:
   function-bind@1.1.2:
     resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
 
-  glixy@0.0.3:
-    resolution: {integrity: sha512-AifInGGpfSZiYkX5Dtk8KBj9dWEZe48cH4Htkhutu8l70lhwoAcaqrWICbKdi9bDBgHBLjZOuovXFU8OQm0zsg==}
+  glixy@0.0.6:
+    resolution: {integrity: sha512-WJzu2nrr6BbL11UaEI5aBil/8eBimJxk30D9l9hQie/OwXdY+NbI/He1PFZAgGBxINjbFylpbbiyDSiL+s1y1A==}
     peerDependencies:
       svelte: ^5.0.0
 
@@ -3642,7 +3642,7 @@ snapshots:
 
   function-bind@1.1.2: {}
 
-  glixy@0.0.3(svelte@5.16.0):
+  glixy@0.0.6(svelte@5.16.0):
     dependencies:
       pixi.js: 8.6.6
       svelte: 5.16.0
