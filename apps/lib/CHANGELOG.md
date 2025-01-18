@@ -1,5 +1,11 @@
 # glixy
 
+## 0.0.10
+
+### Patch Changes
+
+- 1fec6b2: feat: better interaction bindings, added Video element
+
 ## 0.0.9
 
 ### Patch Changes
