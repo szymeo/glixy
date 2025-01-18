@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { ContextKey } from '$lib/types/context-key.enum.js';
-	import { Application as PixiApp, Assets as PixiAssets } from 'pixi.js';
+	import { Application as PixiApp } from 'pixi.js';
 	import { getContext, setContext, type Snippet } from 'svelte';
 
 	type ApplicationInitArguments = Parameters<PixiApp['init']>;

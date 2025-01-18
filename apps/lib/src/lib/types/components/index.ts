@@ -12,4 +12,5 @@ export * from './star-points.component.js';
 export * from './star-dimensions.component.js';
 export * from './opacity.component.js';
 export * from './text.component.js';
+export * from './cursor.component.js';
 // export * from './';
