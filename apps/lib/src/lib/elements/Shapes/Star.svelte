@@ -11,6 +11,7 @@
 		ZIndexComponent,
 	} from '$lib/types/components/index.js';
 	import { ContextKey } from '$lib/types/context-key.enum.js';
+	import { bindInteraction } from '$lib/utils/bind-interaction.svelte.js';
 	import { Application, Container, Graphics } from 'pixi.js';
 	import { getContext } from 'svelte';
 
@@ -23,12 +24,15 @@
 		innerSize,
 		rotation = 0,
 		scale = { x: 1, y: 1 },
-		onmouseover,
-		onmouseout,
 		background = { color: 0, opacity: 1 },
 		border = { color: 0, width: 0, rounded: false, opacity: 1 },
 		// todo: render with cornerRadius
 		cornerRadius = 0,
+		onpointerover,
+		onpointerout,
+		onpointerdown,
+		onpointermove,
+		onpointerup,
 	}: StarDimensionsComponent &
 		StarPointsComponent &
 		Partial<
@@ -52,19 +56,16 @@
 	const markDirty = getContext<() => void>(ContextKey.MARK_DIRTY);
 
 	$effect(() => {
-		graphics.interactive = !!(onmouseover || onmouseout);
+		const cleanup = bindInteraction(graphics, {
+			onpointerover,
+			onpointerout,
+			onpointerdown,
+			onpointermove,
+			onpointerup,
+		});
 
-		if (onmouseover) {
-			graphics.off('mouseover');
-			graphics.on('mouseover', (...argv) => {
-				onmouseover(...argv);
-				onmouseout && graphics.off('mouseout').on('mouseout', onmouseout);
-			});
-		} else if (onmouseout) {
-			graphics.off('mouseout').on('mouseout', onmouseout);
-		}
+		return () => cleanup();
 	});
-
 	$effect(() => {
 		parentContainer.addChild(graphics);
 		markDirty();

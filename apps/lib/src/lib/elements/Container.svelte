@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type {
 		AnchorComponent,
+		ScaleComponent,
 		TransformComponent,
 	} from '$lib/types/components/index.js';
 	import { ContextKey } from '$lib/types/context-key.enum.js';
@@ -12,9 +13,10 @@
 		y = 0,
 		rotation = 0,
 		anchor = { x: 0, y: 0 },
+		scale = { x: 1, y: 1 },
 		children,
 	}: { children: Snippet } & Partial<
-		TransformComponent & AnchorComponent
+		TransformComponent & AnchorComponent & ScaleComponent
 	> = $props();
 	const container = new Container();
 	const stage = getContext<Application>(ContextKey.STAGE)?.stage;
@@ -43,6 +45,8 @@
 	$effect(withMarkDirty(() => (container.rotation = rotation)));
 	$effect(withMarkDirty(() => (container.pivot.x = anchor.x)));
 	$effect(withMarkDirty(() => (container.pivot.y = anchor.y)));
+	$effect(withMarkDirty(() => (container.scale.x = scale.x)));
+	$effect(withMarkDirty(() => (container.scale.y = scale.y)));
 
 	function withMarkDirty(fn: () => void) {
 		return () => {

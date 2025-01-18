@@ -10,6 +10,7 @@
 		ZIndexComponent,
 	} from '$lib/types/components/index.js';
 	import { ContextKey } from '$lib/types/context-key.enum.js';
+	import { bindInteraction } from '$lib/utils/bind-interaction.svelte.js';
 	import { Application, Assets, Container, Sprite } from 'pixi.js';
 	import { getContext } from 'svelte';
 
@@ -24,8 +25,11 @@
 		scale = { x: 1, y: 1 },
 		texture,
 		anchor = { x: 0, y: 0 },
-		onmouseover,
-		onmouseout,
+		onpointerover,
+		onpointerout,
+		onpointerdown,
+		onpointermove,
+		onpointerup,
 	}: Partial<
 		OpacityComponent &
 			TransformComponent &
@@ -49,17 +53,15 @@
 	const markDirty = getContext<() => void>(ContextKey.MARK_DIRTY);
 
 	$effect(() => {
-		sprite.interactive = !!(onmouseover || onmouseout);
+		const cleanup = bindInteraction(sprite, {
+			onpointerover,
+			onpointerout,
+			onpointerdown,
+			onpointermove,
+			onpointerup,
+		});
 
-		if (onmouseover) {
-			sprite.off('mouseover');
-			sprite.on('mouseover', (...argv) => {
-				onmouseover(...argv);
-				onmouseout && sprite.off('mouseout').on('mouseout', onmouseout);
-			});
-		} else if (onmouseout) {
-			sprite.off('mouseout').on('mouseout', onmouseout);
-		}
+		return () => cleanup();
 	});
 
 	$effect(() => {
