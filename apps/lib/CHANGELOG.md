@@ -1,5 +1,11 @@
 # glixy
 
+## 0.0.11
+
+### Patch Changes
+
+- 3597865: fix: export Video element from package
+
 ## 0.0.10
 
 ### Patch Changes
