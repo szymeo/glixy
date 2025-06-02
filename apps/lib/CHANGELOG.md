@@ -1,5 +1,11 @@
 # glixy
 
+## 0.0.13
+
+### Patch Changes
+
+- dbbb6c6: feat: expose mounted property from stage
+
 ## 0.0.12
 
 ### Patch Changes
