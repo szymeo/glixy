@@ -1,5 +1,11 @@
 # glixy
 
+## 0.0.12
+
+### Patch Changes
+
+- 08402bd: feat: add sprite object fit option
+
 ## 0.0.11
 
 ### Patch Changes
