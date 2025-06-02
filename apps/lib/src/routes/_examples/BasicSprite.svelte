@@ -28,6 +28,8 @@
 
 		return () => clearInterval(clean);
 	});
+
+	let mounted = $state(false);
 </script>
 
 {#snippet bunny(x: number, y: number, rotation: number)}
@@ -42,10 +44,10 @@
 		{rotation}
 	/>
 {/snippet}
-
+<span class="text-white">stage mounted: {mounted}</span>
 <Example>
 	{#snippet children(host: HTMLElement, hostWidth: number, hostHeight: number)}
-		<Stage {host} background="#111111" antialias={true}>
+		<Stage bind:mounted {host} background="#111111" antialias={true}>
 			{@render bunny(hostWidth - 100, hostHeight - 100, rotation)}
 
 			<Container x={100} y={hostHeight - 100} rotation={rotation * -0.042}>

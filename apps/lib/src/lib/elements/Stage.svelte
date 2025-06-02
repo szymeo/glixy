@@ -8,14 +8,19 @@
 		{
 			children: Snippet;
 			host: HTMLElement;
+			mounted?: boolean;
 		} & ApplicationInitArguments[0],
 		'resizeTo'
 	>;
 
-	const { children, host, ...appInitProps }: Props = $props();
+	let {
+		children,
+		host,
+		mounted = $bindable(false),
+		...appInitProps
+	}: Props = $props();
 	const app = new PixiApp();
 	const parentApp = getContext(ContextKey.STAGE);
-	let rendered = $state(false);
 	let isDirty = true;
 
 	if (parentApp) {
@@ -57,18 +62,18 @@
 			host.appendChild(app.canvas);
 			render();
 			renderInterval = setInterval(render, 1000 / 60);
-			rendered = true;
+			mounted = true;
 		});
 
 		return () => {
 			clearInterval(renderInterval);
 			host.removeChild(app.canvas);
-			rendered = false;
+			mounted = false;
 			app.destroy();
 		};
 	});
 </script>
 
-{#if rendered}
+{#if mounted}
 	{@render children()}
 {/if}
