@@ -1,5 +1,11 @@
 # glixy
 
+## 0.0.14
+
+### Patch Changes
+
+- 292ca43: feat: add elements tab to docs, fix script tag casing, introduce Rectangle#anchor property #20
+
 ## 0.0.13
 
 ### Patch Changes
