@@ -52,7 +52,7 @@ The `Sprite` component is used to render images in the WebGL context.
 </script>
 
 <Sprite
-	texture="https://pixijs.com/assets/bunny.png"
+	texture="/bunny.png"
 	x={150}
 	y={150}
 	scale={{ x: 1, y: 1 }}

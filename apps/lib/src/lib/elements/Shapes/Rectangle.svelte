@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type {
+		AnchorComponent,
 		BackgroundComponent,
 		BorderComponent,
 		CornerRadiusComponent,
@@ -28,6 +29,7 @@
 		onpointerdown,
 		onpointermove,
 		onpointerup,
+		anchor = { x: 0, y: 0 },
 		background = { color: 0, opacity: 1 },
 		border = { color: 0, width: 0, rounded: false, opacity: 1 },
 		cornerRadius = 0,
@@ -38,6 +40,7 @@
 				ScaleComponent &
 				InteractionsComponent &
 				CornerRadiusComponent &
+				AnchorComponent &
 				BackgroundComponent &
 				BorderComponent &
 				ZIndexComponent &
@@ -71,14 +74,14 @@
 		markDirty();
 
 		return () => {
-			console.log('cleanup');
-
 			parentContainer.removeChild(graphics);
 			graphics.destroy();
 			markDirty();
 		};
 	});
 
+	$effect(withMarkDirty(() => (graphics.pivot.x = anchor.x)));
+	$effect(withMarkDirty(() => (graphics.pivot.y = anchor.y)));
 	$effect(withMarkDirty(() => (graphics.scale.x = scale.x)));
 	$effect(withMarkDirty(() => (graphics.scale.y = scale.y)));
 	$effect(
@@ -98,7 +101,6 @@
 				}),
 		),
 	);
-	$effect(withMarkDirty(() => (graphics.rotation = rotation)));
 	$effect(withMarkDirty(() => (graphics.rotation = rotation)));
 	$effect(withMarkDirty(() => (graphics.zIndex = z)));
 	$effect(withMarkDirty(() => (graphics.cursor = cursor)));

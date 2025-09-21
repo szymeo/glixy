@@ -7,14 +7,15 @@
 		children: Snippet<[host: HTMLDivElement, width: number, height: number]>;
 		code?: string;
 		controls?: Snippet;
+		expanded?: boolean;
 	};
 
-	const { children, code, controls }: Props = $props();
+	const { children, code, controls, expanded }: Props = $props();
 
 	let host: HTMLDivElement | null = $state(null);
 	let hostHeight = $state(0);
 	let hostWidth = $state(0);
-	let codeVisible = $state(false);
+	let codeVisible = $state(expanded);
 	let codeContainer: HTMLDivElement | null = $state<HTMLDivElement | null>(
 		null,
 	);
@@ -38,7 +39,7 @@
 		<div
 			class="absolute flex w-full flex-wrap items-center justify-start gap-2 p-6"
 		>
-			{#if code}
+			{#if code && !expanded}
 				<button
 					onclick={() => (codeVisible = !codeVisible)}
 					class="icon-btn btn-primary shrink-0"
@@ -67,7 +68,12 @@
 			bind:this={codeContainer}
 			class:invisible={!codeVisible}
 			class:visible={codeVisible}
-			class="transition-height relative -mt-7 overflow-hidden rounded-b-xl border border-gray-300 bg-gray-100 pt-6 [&>pre>code.hljs]:bg-gray-100 [&>pre>code.hljs]:p-8"
+			class={[
+				'relative -mt-7 overflow-hidden rounded-b-xl border border-gray-300 bg-gray-100 pt-6 [&>pre>code.hljs]:bg-gray-100 [&>pre>code.hljs]:p-8',
+				{
+					'transition-height': !expanded,
+				},
+			]}
 			style="height: 0px;"
 		>
 			<HighlightAuto {code} />

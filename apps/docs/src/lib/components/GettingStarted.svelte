@@ -3,28 +3,8 @@
 	import DocsPage from './atoms/DocsPage.svelte';
 	import DocsPageSection from './atoms/DocsPageSection.svelte';
 	import Example from './atoms/Example.svelte';
-	import { Stage, Container, Sprite } from 'glixy';
-
-	const step1 = (
-		imports: string,
-		children: string,
-		scripts?: string,
-	) => `<Script lang="ts">
-    import { ${imports} } from 'glixy';
-
-    let host: HTMLElement | null = $state(null);
-    ${scripts || ''}
-</Script>
-
-<div bind:this={host} style="background-color: #111111;">
-    {#if host}
-        <Stage {host} background="#111111">
-            ${children}
-        </Stage>
-    {:else}
-        <div>Loading stage...</div>
-    {/if}
-</div>`;
+	import { Stage, Sprite } from 'glixy';
+	import { GETTING_STARTED_CODE_SNIPPET } from '$lib/code-snippets';
 
 	let x = $state(10);
 	let y = $state(10);
@@ -70,7 +50,10 @@
 		{#snippet code()}
 			<HighlightAuto
 				class="code-snippet"
-				code={step1('Stage', `<!-- rendered contents will go there -->`)}
+				code={GETTING_STARTED_CODE_SNIPPET(
+					'Stage',
+					`<!-- rendered contents will go there -->`,
+				)}
 			/>
 		{/snippet}
 	</DocsPageSection>
@@ -92,13 +75,13 @@
 		{#snippet code()}
 			<HighlightAuto
 				class="code-snippet"
-				code={step1(
+				code={GETTING_STARTED_CODE_SNIPPET(
 					'Sprite, Stage',
 					`<Sprite
-                texture="https://pixijs.com/assets/bunny.png"
-                x={100}
-                y={100}
-            />`,
+        texture="/bunny.png"
+        x={100}
+        y={100}
+      />`,
 				)}
 			/>
 		{/snippet}
@@ -120,22 +103,22 @@
 		{#snippet code()}
 			<HighlightAuto
 				class="code-snippet"
-				code={step1(
+				code={GETTING_STARTED_CODE_SNIPPET(
 					'Sprite, Stage',
 					`<Sprite
-                texture="https://pixijs.com/assets/bunny.png"
-                {x}
-                {y}
-            />`,
+        texture="/bunny.png"
+        {x}
+        {y}
+      />`,
 					`let x = $state(10);
-    let y = $state(10);
+  let y = $state(10);
 
-    $effect(() => {
-        setInterval(() => {
-            x = Math.random();
-            y = Math.random();
-        }, 1000);
-    });`,
+  $effect(() => {
+    setInterval(() => {
+      x = Math.random();
+      y = Math.random();
+    }, 1000);
+  });`,
 				)}
 			/>
 		{/snippet}
@@ -152,23 +135,23 @@
 
 		{#snippet children()}
 			<Example
-				code={step1(
+				code={GETTING_STARTED_CODE_SNIPPET(
 					'Sprite, Stage',
 					`<Sprite
-                anchor={{ x: 0.5, y: 0.5 }}
-                texture="https://pixijs.com/assets/bunny.png"
-                x={x * hostWidth}
-                y={y * hostHeight}
-            />`,
+        anchor={{ x: 0.5, y: 0.5 }}
+        texture="/bunny.png"
+        x={x * hostWidth}
+        y={y * hostHeight}
+      />`,
 					`let x = $state(10);
-    let y = $state(10);
-    
-    $effect(() => {
-        setInterval(() => {
-            x = Math.random();
-            y = Math.random();
-        }, 1000);
-    });`,
+  let y = $state(10);
+  
+  $effect(() => {
+    setInterval(() => {
+      x = Math.random();
+      y = Math.random();
+    }, 1000);
+  });`,
 				)}
 			>
 				{#snippet children(
@@ -176,10 +159,10 @@
 					hostWidth: number,
 					hostHeight: number,
 				)}
-					<Stage {host} resizeTo={host} background="#1f2937" antialias={true}>
+					<Stage {host} background="#1f2937" antialias={true}>
 						<Sprite
 							anchor={{ x: 0.5, y: 0.5 }}
-							texture="https://pixijs.com/assets/bunny.png"
+							texture="/bunny.png"
 							x={x * hostWidth}
 							y={y * hostHeight}
 						/>
@@ -237,30 +220,30 @@
 			{/snippet}
 			<Example
 				{controls}
-				code={step1(
+				code={GETTING_STARTED_CODE_SNIPPET(
 					'Sprite, Stage',
 					`<Sprite
-                anchor={{ x: 0.5, y: 0.5 }}
-                texture="https://pixijs.com/assets/bunny.png"
-                x={speedX * hostWidth}
-                y={speedY * hostHeight}
-            />`,
+        anchor={{ x: 0.5, y: 0.5 }}
+        texture="/bunny.png"
+        x={speedX * hostWidth}
+        y={speedY * hostHeight}
+      />`,
 					`let speedX = $state(10);
-	let speedY = $state(10);
-	let updatePositionIntervalMS = $state(1000);
-	let visible = $state(true);
+  let speedY = $state(10);
+  let updatePositionIntervalMS = $state(1000);
+  let visible = $state(true);
     
-    $effect(() => {
-		speedX = Math.random();
-		speedY = Math.random();
+  $effect(() => {
+    speedX = Math.random();
+    speedY = Math.random();
 
-		const speedyInterval = setInterval(() => {
-			speedX = Math.random();
-			speedY = Math.random();
-		}, updatePositionIntervalMS);
+    const speedyInterval = setInterval(() => {
+      speedX = Math.random();
+      speedY = Math.random();
+    }, updatePositionIntervalMS);
 
-		return () => clearInterval(speedyInterval);
-	});`,
+    return () => clearInterval(speedyInterval);
+  });`,
 				)}
 			>
 				{#snippet children(
@@ -268,11 +251,11 @@
 					hostWidth: number,
 					hostHeight: number,
 				)}
-					<Stage {host} resizeTo={host} background="#1f2937" antialias={true}>
+					<Stage {host} background="#1f2937" antialias={true}>
 						{#if visible}
 							<Sprite
 								anchor={{ x: 0.5, y: 0.5 }}
-								texture="https://pixijs.com/assets/bunny.png"
+								texture="/bunny.png"
 								x={speedX * hostWidth}
 								y={speedY * hostHeight}
 							/>

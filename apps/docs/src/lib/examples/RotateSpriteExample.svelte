@@ -6,13 +6,7 @@
 </script>
 
 {#snippet bunny(x: number, y: number)}
-	<Sprite
-		{rotation}
-		anchor={{ x: 0.5, y: 0.5 }}
-		texture="https://pixijs.com/assets/bunny.png"
-		{x}
-		{y}
-	/>
+	<Sprite {rotation} anchor={{ x: 0.5, y: 0.5 }} texture="/bunny.png" {x} {y} />
 {/snippet}
 
 <Example
@@ -28,7 +22,7 @@
 	<Sprite
 		{rotation}
 		anchor={{ x: 0.5, y: 0.5 }}
-		texture="https://pixijs.com/assets/bunny.png"
+		texture="/bunny.png"
 		{x}
 		{y}
 	/>

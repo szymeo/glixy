@@ -8,7 +8,7 @@
 
 <div class="flex items-center justify-between">
 	<a href="/">
-		<Logo class="h-20 w-44" />
+		<Logo class="h-16 w-32" />
 	</a>
 
 	<a
