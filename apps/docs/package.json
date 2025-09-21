@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@fontsource/overlock": "^5.2.8",
-    "glixy": "^0.0.14",
+    "glixy": "workspace:*",
     "highlight.js": "^11.11.1",
     "svelte-highlight": "^7.8.1"
   }

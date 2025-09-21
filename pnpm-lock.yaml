@@ -27,8 +27,8 @@ importers:
         specifier: ^5.2.8
         version: 5.2.8
       glixy:
-        specifier: ^0.0.13
-        version: 0.0.13(svelte@5.39.3)
+        specifier: workspace:*
+        version: link:../lib
       highlight.js:
         specifier: ^11.11.1
         version: 11.11.1
@@ -1405,11 +1405,6 @@ packages:
 
   gifuct-js@2.1.2:
     resolution: {integrity: sha512-rI2asw77u0mGgwhV3qA+OEgYqaDn5UNqgs+Bx0FGwSpuqfYn+Ir6RQY5ENNQ8SbIiG/m5gVa7CD5RriO4f4Lsg==}
-
-  glixy@0.0.13:
-    resolution: {integrity: sha512-KHXmKQppcBimwjmQNwZKi4WuGuAVVryLObfOc7v4f/byMGJ4XZhsBXUo6XgHreyjPNbO3dktQLRKLorhjKlenw==}
-    peerDependencies:
-      svelte: ^5.0.0
 
   glob-parent@5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
@@ -3704,11 +3699,6 @@ snapshots:
   gifuct-js@2.1.2:
     dependencies:
       js-binary-schema-parser: 2.0.3
-
-  glixy@0.0.13(svelte@5.39.3):
-    dependencies:
-      pixi.js: 8.13.2
-      svelte: 5.39.3
 
   glob-parent@5.1.2:
     dependencies:
