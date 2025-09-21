@@ -1,24 +1,24 @@
 {
-	"name": "glixy",
-	"private": false,
-	"scripts": {
-		"build": "turbo run build",
-		"dev:docs": "turbo run dev --filter=docs",
-		"dev": "turbo run dev --filter=glixy",
-		"lint": "turbo run lint",
-		"format": "prettier --write .",
-		"release": "turbo build && changeset publish --filter=glixy",
-		"changeset": "changeset",
-		"version-packages": "changeset version"
-	},
-	"devDependencies": {
-		"@changesets/cli": "^2.27.11",
-		"prettier": "^3.2.5",
-		"prettier-plugin-svelte": "^3.2.2",
-		"turbo": "^2.3.3"
-	},
-	"packageManager": "pnpm@9.0.0",
-	"engines": {
-		"node": ">=18"
-	}
+  "name": "glixy",
+  "private": false,
+  "scripts": {
+    "build": "turbo run build --filter=glixy",
+    "dev:docs": "turbo run dev --filter=docs",
+    "dev": "turbo run dev --filter=glixy",
+    "lint": "turbo run lint",
+    "format": "prettier --write .",
+    "release": "turbo build && changeset publish --filter=glixy",
+    "changeset": "changeset",
+    "version-packages": "changeset version"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.11",
+    "prettier": "^3.2.5",
+    "prettier-plugin-svelte": "^3.2.2",
+    "turbo": "^2.3.3"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=18"
+  }
 }
