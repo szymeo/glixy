@@ -25,7 +25,7 @@ onMount(() => setInterval(() => (rotation += 0.05), 1000 / 60));
 	<Sprite
 		{rotation}
 		anchor={{ x: 0.5, y: 0.5 }}
-		texture="https://pixijs.com/assets/bunny.png"
+		texture="/bunny.png"
 		{x}
 		{y}
 		{scale}
@@ -74,7 +74,7 @@ onMount(() => setInterval(() => (rotation += 0.05), 1000 / 60));
 	<Sprite
 		{rotation}
 		anchor={{ x: 0.5, y: 0.5 }}
-		texture="https://pixijs.com/assets/bunny.png"
+		texture="/bunny.png"
 		{x}
 		{y}
 		{scale}

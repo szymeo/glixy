@@ -37,7 +37,7 @@
 		{opacity}
 		anchor={{ x: 0.5, y: 0.5 }}
 		scale={{ x: 1.5, y: 1.5 }}
-		texture="https://pixijs.com/assets/bunny.png"
+		texture="/bunny.png"
 		{x}
 		{y}
 		z={0}
