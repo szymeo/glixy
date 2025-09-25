@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
-
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
@@ -10,6 +8,6 @@ html {
 	padding: 0;
 	width: 100%;
 	height: 100%;
-	font-family: 'Overlock', sans-serif;
-	@apply bg-slate-950;
+	font-family: system-ui, sans-serif;
+	@apply bg-black;
 }
