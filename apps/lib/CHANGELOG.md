@@ -1,5 +1,11 @@
 # glixy
 
+## 0.0.15
+
+### Patch Changes
+
+- 8b6dc81: feat: use worker by default
+
 ## 0.0.14
 
 ### Patch Changes

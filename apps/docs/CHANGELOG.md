@@ -1,5 +1,12 @@
 # glixy-docs
 
+## 0.0.4
+
+### Patch Changes
+
+- Updated dependencies [8b6dc81]
+  - glixy@0.0.15
+
 ## 0.0.3
 
 ### Patch Changes
