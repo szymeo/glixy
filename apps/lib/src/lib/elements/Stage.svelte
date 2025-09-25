@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { ContextKey } from '$lib/types/context-key.enum.js';
-	import { Application as PixiApp } from 'pixi.js';
+	import {
+		DOMAdapter,
+		Application as PixiApp,
+		WebWorkerAdapter,
+	} from 'pixi.js';
 	import { getContext, setContext, type Snippet } from 'svelte';
 
 	type ApplicationInitArguments = Parameters<PixiApp['init']>;
@@ -19,6 +23,7 @@
 		mounted = $bindable(false),
 		...appInitProps
 	}: Props = $props();
+	DOMAdapter.set(WebWorkerAdapter);
 	const app = new PixiApp();
 	const parentApp = getContext(ContextKey.STAGE);
 	let isDirty = true;
@@ -39,6 +44,7 @@
 		}
 
 		let renderInterval: ReturnType<typeof setInterval>;
+		const canvas: HTMLCanvasElement = document.createElement('canvas');
 
 		const render = () => {
 			if (!isDirty) {
@@ -49,9 +55,16 @@
 			isDirty = false;
 		};
 
+		canvas.style.width = '100%';
+		canvas.style.height = '100%';
+		host.appendChild(canvas);
+
+		const offscreenCanvas = canvas.transferControlToOffscreen();
+
 		Promise.all([
 			app.init({
 				...appInitProps,
+				canvas: offscreenCanvas,
 				resizeTo: host,
 				resolution: appInitProps.resolution ?? window.devicePixelRatio,
 				autoDensity: appInitProps.autoDensity ?? true,
@@ -59,7 +72,6 @@
 		]).then(() => {
 			app.ticker.autoStart = false;
 			app.ticker.stop();
-			host.appendChild(app.canvas);
 			render();
 			renderInterval = setInterval(render, 1000 / 60);
 			mounted = true;
@@ -67,7 +79,9 @@
 
 		return () => {
 			clearInterval(renderInterval);
-			host.removeChild(app.canvas);
+			if (canvas && canvas.parentNode) {
+				host.removeChild(canvas);
+			}
 			mounted = false;
 			app.destroy();
 		};
