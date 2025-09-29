@@ -1,5 +1,8 @@
 <script lang="ts">
-	import { STAGE_CODE_SNIPPET } from '$lib/code-snippets';
+	import {
+		STAGE_CODE_SNIPPET,
+		STAGE_WORKER_CODE_SNIPPET,
+	} from '$lib/code-snippets';
 	import DocsPage from '$lib/components/atoms/DocsPage.svelte';
 	import DocsPageSection from '$lib/components/atoms/DocsPageSection.svelte';
 	import { HighlightAuto } from 'svelte-highlight';
@@ -39,6 +42,20 @@
 					<p class="text-sm text-gray-600">
 						The DOM element that will contain the PixiJS canvas. The Stage will
 						automatically resize to fit this container.
+					</p>
+				</div>
+
+				<div class="rounded-lg border p-4">
+					<h4 class="mb-2 font-semibold">
+						<code>worker</code>
+						<span class="text-sm text-gray-500">(boolean, bindable)</span>
+					</h4>
+					<p class="text-sm text-gray-600">
+						Enable web worker mode for improved performance by offloading
+						rendering to a web worker. When <code>true</code>
+						, uses an offscreen canvas with PixiJS WebWorkerAdapter. Default is
+						<code>false</code>
+						.
 					</p>
 				</div>
 
@@ -124,6 +141,58 @@
 						.
 					</p>
 				</div>
+
+				<div class="rounded-lg border p-4">
+					<h4 class="mb-2 font-semibold">
+						<code>worker</code>
+						<span class="text-sm text-gray-500">(boolean, optional)</span>
+					</h4>
+					<p class="text-sm text-gray-600">
+						Enable web worker mode for improved performance by offloading
+						rendering to a web worker. When <code>true</code>
+						, uses an offscreen canvas with PixiJS WebWorkerAdapter. Default is
+						<code>false</code>
+						.
+					</p>
+				</div>
+			</div>
+		{/snippet}
+	</DocsPageSection>
+
+	<DocsPageSection>
+		{#snippet title()}
+			Web Worker Mode
+		{/snippet}
+		{#snippet description()}
+			Enable high-performance rendering using web workers with the <code>
+				worker
+			</code>
+			property:
+		{/snippet}
+		{#snippet code()}
+			<HighlightAuto class="code-snippet" code={STAGE_WORKER_CODE_SNIPPET} />
+		{/snippet}
+		{#snippet children()}
+			<div class="space-y-4">
+				<p class="text-sm text-gray-600">
+					When <code>worker={true}</code>
+					is set, the Stage component:
+				</p>
+				<ul class="list-inside list-disc space-y-2 text-sm text-gray-600">
+					<li>Uses PixiJS WebWorkerAdapter for offscreen rendering</li>
+					<li>
+						Transfers canvas control to an offscreen canvas for better
+						performance
+					</li>
+					<li>
+						Helps prevent blocking the main thread during intensive rendering
+						operations
+					</li>
+					<li>
+						Particularly beneficial for complex scenes with many animated
+						elements
+					</li>
+				</ul>
 			</div>
 		{/snippet}
 	</DocsPageSection>
@@ -156,6 +225,10 @@
 				<li>
 					The Stage uses a 60fps render loop that only updates when changes are
 					detected
+				</li>
+				<li>
+					Use <code>worker={true}</code>
+					for performance-critical applications with heavy rendering workloads
 				</li>
 			</ul>
 		{/snippet}

@@ -14,6 +14,22 @@ export const STAGE_CODE_SNIPPET = `<script>
   {/if}
 </div>`;
 
+export const STAGE_WORKER_CODE_SNIPPET = `<script>
+  import { Stage, Sprite } from 'glixy';
+  
+  let host: HTMLElement | null = $state(null);
+</script>
+
+<div bind:this={host} class="w-full h-96">
+  {#if host}
+    <Stage {host} worker={true}>
+      <Sprite texture="/image.png" x={100} y={100} />
+    </Stage>
+  {:else}
+    <div>Loading stage...</div>
+  {/if}
+</div>`;
+
 export const GETTING_STARTED_CODE_SNIPPET = (
 	imports: string,
 	children: string,

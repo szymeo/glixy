@@ -13,6 +13,7 @@
 			children: Snippet;
 			host: HTMLElement;
 			mounted?: boolean;
+			worker?: boolean;
 		} & ApplicationInitArguments[0],
 		'resizeTo'
 	>;
@@ -21,9 +22,14 @@
 		children,
 		host,
 		mounted = $bindable(false),
+		worker = false,
 		...appInitProps
 	}: Props = $props();
-	DOMAdapter.set(WebWorkerAdapter);
+
+	if (worker) {
+		DOMAdapter.set(WebWorkerAdapter);
+	}
+
 	const app = new PixiApp();
 	const parentApp = getContext(ContextKey.STAGE);
 	let isDirty = true;
@@ -46,6 +52,14 @@
 		let renderInterval: ReturnType<typeof setInterval>;
 		const canvas: HTMLCanvasElement = document.createElement('canvas');
 
+		if (worker) {
+			canvas.style.width = '100%';
+			canvas.style.height = '100%';
+			host.appendChild(canvas);
+		}
+
+		const offscreenCanvas = canvas.transferControlToOffscreen();
+
 		const render = () => {
 			if (!isDirty) {
 				return;
@@ -55,16 +69,10 @@
 			isDirty = false;
 		};
 
-		canvas.style.width = '100%';
-		canvas.style.height = '100%';
-		host.appendChild(canvas);
-
-		const offscreenCanvas = canvas.transferControlToOffscreen();
-
 		Promise.all([
 			app.init({
 				...appInitProps,
-				canvas: offscreenCanvas,
+				...(worker ? { canvas: offscreenCanvas } : {}),
 				resizeTo: host,
 				resolution: appInitProps.resolution ?? window.devicePixelRatio,
 				autoDensity: appInitProps.autoDensity ?? true,
@@ -72,6 +80,11 @@
 		]).then(() => {
 			app.ticker.autoStart = false;
 			app.ticker.stop();
+
+			if (!worker) {
+				host.appendChild(app.canvas);
+			}
+
 			render();
 			renderInterval = setInterval(render, 1000 / 60);
 			mounted = true;
