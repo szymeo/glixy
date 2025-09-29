@@ -21,13 +21,13 @@
 		return () => clearInterval(clean);
 	});
 
-	$effect(() => {
-		const clean = setInterval(() => {
-			rotation += 0.1;
-		}, 1000 / 60);
+	// $effect(() => {
+	// 	const clean = setInterval(() => {
+	// 		rotation += 0.1;
+	// 	}, 1000 / 60);
 
-		return () => clearInterval(clean);
-	});
+	// 	return () => clearInterval(clean);
+	// });
 
 	let mounted = $state(false);
 	let optimized = $state(true);
