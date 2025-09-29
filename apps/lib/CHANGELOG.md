@@ -1,5 +1,11 @@
 # glixy
 
+## 0.0.16
+
+### Patch Changes
+
+- a91e5c0: feat: opt-in worker
+
 ## 0.0.15
 
 ### Patch Changes
