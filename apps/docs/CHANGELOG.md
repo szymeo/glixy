@@ -1,5 +1,13 @@
 # glixy-docs
 
+## 0.0.5
+
+### Patch Changes
+
+- a91e5c0: feat: opt-in worker
+- Updated dependencies [a91e5c0]
+  - glixy@0.0.16
+
 ## 0.0.4
 
 ### Patch Changes
