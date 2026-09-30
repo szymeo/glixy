@@ -1,12 +1,16 @@
 <script lang="ts">
-	import '@fontsource/overlock/400.css';
-	import '@fontsource/overlock/700.css';
-	import '@fontsource/overlock/900.css';
+	// Variable fonts: one file each covers every weight, so the type scale
+	// uses real weights instead of faux bolding.
+	import '@fontsource-variable/inter';
+	import '@fontsource-variable/geist-mono';
 
 	import '../app.css';
-	import 'svelte-highlight/styles/atom-one-light.css';
 
 	let { children } = $props();
 </script>
+
+<svelte:head>
+	<meta name="theme-color" content="#fafafa" />
+</svelte:head>
 
 {@render children()}

@@ -7,10 +7,27 @@
 		children: Snippet<[host: HTMLDivElement, width: number, height: number]>;
 		code?: string;
 		controls?: Snippet;
+		/** Render the source open, without a toggle. */
 		expanded?: boolean;
+		/** Stage height in px. Examples are wide, so they stay short. */
+		height?: number;
+		/**
+		 * Let pointer events reach the canvas. Off by default so a touch drag
+		 * scrolls the page instead of being swallowed by the renderer.
+		 */
+		interactive?: boolean;
+		class?: string;
 	};
 
-	const { children, code, controls, expanded }: Props = $props();
+	const {
+		children,
+		code,
+		controls,
+		expanded = false,
+		height = 288,
+		interactive = false,
+		class: className = '',
+	}: Props = $props();
 
 	let host: HTMLDivElement | null = $state(null);
 	let hostHeight = $state(0);
@@ -29,36 +46,44 @@
 	});
 </script>
 
-<div class="flex flex-col">
+<figure class="card m-0 overflow-hidden {className}">
+	<!-- Controls head the panel, so the canvas below stays unobstructed. -->
+	{#if controls || (code && !expanded)}
+		<div class="flex h-11 items-center gap-3 border-b border-line px-2">
+			{#if controls}
+				{@render controls()}
+			{/if}
+
+			{#if code && !expanded}
+				<button
+					onclick={() => (codeVisible = !codeVisible)}
+					class="btn btn-sm ml-auto gap-1.5 px-3 text-ink-muted hover:bg-surface-sunken hover:text-ink"
+					aria-expanded={codeVisible}
+				>
+					<CodeIcon class="size-4" />
+					{codeVisible ? 'Hide source' : 'Source'}
+				</button>
+			{/if}
+		</div>
+	{/if}
+
 	<div
 		bind:this={host}
 		bind:clientWidth={hostWidth}
 		bind:clientHeight={hostHeight}
-		class="relative z-10 h-96 w-full touch-auto overflow-hidden rounded-3xl bg-gray-800 [&>canvas]:pointer-events-none"
+		style="height: {height}px"
+		class={[
+			'relative w-full touch-auto overflow-hidden bg-surface-sunken',
+			{ '[&>canvas]:pointer-events-none': !interactive },
+		]}
 	>
-		<div
-			class="absolute flex w-full flex-wrap items-center justify-start gap-2 p-6"
-		>
-			{#if code && !expanded}
-				<button
-					onclick={() => (codeVisible = !codeVisible)}
-					class="icon-btn btn-primary shrink-0"
-					title="Show code"
-				>
-					<CodeIcon class="h-5 w-5" stroke="stroke-gray-100" />
-				</button>
-			{/if}
-
-			{#if controls}
-				{@render controls()}
-			{/if}
-		</div>
-
 		{#if host}
 			{@render children(host, hostWidth, hostHeight)}
 		{:else}
-			<div class="flex h-full items-center justify-center text-slate-200">
-				Loading...
+			<div
+				class="flex h-full items-center justify-center text-[13px] text-ink-faint"
+			>
+				Starting renderer…
 			</div>
 		{/if}
 	</div>
@@ -66,17 +91,13 @@
 	{#if code}
 		<div
 			bind:this={codeContainer}
-			class:invisible={!codeVisible}
-			class:visible={codeVisible}
 			class={[
-				'relative -mt-7 overflow-hidden rounded-b-xl border border-gray-300 bg-gray-100 pt-6 [&>pre>code.hljs]:bg-gray-100 [&>pre>code.hljs]:p-8',
-				{
-					'transition-height': !expanded,
-				},
+				'code-panel overflow-hidden border-t border-line',
+				{ 'transition-height duration-200 ease-out': !expanded },
 			]}
 			style="height: 0px;"
 		>
 			<HighlightAuto {code} />
 		</div>
 	{/if}
-</div>
+</figure>

@@ -1,31 +1,44 @@
 <script lang="ts">
+	import Section from '$lib/components/Section.svelte';
+
+	// Four independent properties of the renderer, not a sequence, so no
+	// numbering: the hairlines between the cells carry the grouping.
 	const features = [
 		{
-			title: '😱 Avoid memory leaks',
+			title: 'Render on demand',
 			description:
-				'Automatically clean up resources when scene objects are destroyed.',
+				'The loop is stopped by default. A frame is drawn when a prop in the scene actually changes.',
 		},
 		{
-			title: '🚀 Render on demand',
-			description: 'Glixy runs the render loop only when needed.',
-		},
-		{
-			title: '🏎️ Illegally fast',
+			title: 'Cleanup comes free',
 			description:
-				'With PixiJS@8 and Svelte@5 under the hood, Glixy offers best in class performance.',
+				'Sprites, textures and containers are destroyed with the component that declared them.',
 		},
 		{
-			title: '🏗️ Declarative API and Component Architecture',
-			description: 'Render complex scenes without a headache.',
+			title: 'Declarative scenes',
+			description:
+				'Stage, Container, Sprite, Text, Video and shapes are plain components. Compose them with `{#each}` and `{#if}`.',
+		},
+		{
+			title: 'PixiJS 8 underneath',
+			description:
+				'The full WebGL pipeline, reached through Svelte 5 runes rather than an imperative scene graph.',
 		},
 	];
 </script>
 
-<ul class="my-12 list-decimal pl-10 font-mono text-xl text-slate-600">
-	{#each features as feature}
-		<li class="mb-5">
-			<p class="mb-0 text-xl">{feature.title}</p>
-			<span class="text-base text-slate-500">{feature.description}</span>
-		</li>
-	{/each}
-</ul>
+<Section>
+	<dl class="m-0 grid gap-px bg-line sm:grid-cols-2">
+		{#each features as feature (feature.title)}
+			<div class="bg-surface px-4 py-8 sm:px-6 lg:px-10 lg:py-12">
+				<dt class="text-lg font-medium tracking-[-0.02em]">{feature.title}</dt>
+				<dd class="m-0 mt-2 max-w-md leading-relaxed text-ink-muted">
+					{#each feature.description.split('`') as part, index (index)}
+						{#if index % 2}<code class="code-inline">{part}</code
+							>{:else}{part}{/if}
+					{/each}
+				</dd>
+			</div>
+		{/each}
+	</dl>
+</Section>

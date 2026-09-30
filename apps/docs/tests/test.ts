@@ -5,7 +5,7 @@ test('index page has expected h1', async ({ page }) => {
 	await expect(
 		page.getByRole('heading', {
 			level: 1,
-			name: '2D WebGL scenes as Svelte components',
+			name: '2D WebGL scenes. As Svelte components.',
 		}),
 	).toBeVisible();
 });
