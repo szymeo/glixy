@@ -3,7 +3,7 @@
 	import DocsPage from '$lib/components/atoms/DocsPage.svelte';
 	import DocsPageSection from '$lib/components/atoms/DocsPageSection.svelte';
 	import Example from '$lib/components/atoms/Example.svelte';
-	import { Rectangle, Stage, Star } from 'glixy';
+	import { Stage, Star } from 'glixy';
 </script>
 
 <DocsPage title="Star">

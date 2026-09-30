@@ -1,8 +1,6 @@
 <script>
 	import Header from '../Header.svelte';
 	import { page } from '$app/state';
-	import { fly } from 'svelte/transition';
-	import { quadInOut } from 'svelte/easing';
 	import Footer from '$lib/components/Footer.svelte';
 
 	const routes = [

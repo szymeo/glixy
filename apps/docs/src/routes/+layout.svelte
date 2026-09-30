@@ -4,12 +4,9 @@
 	import '@fontsource/overlock/900.css';
 
 	import '../app.css';
-	let { children } = $props();
-	import atomOneDark from 'svelte-highlight/styles/atom-one-light';
-</script>
+	import 'svelte-highlight/styles/atom-one-light.css';
 
-<svelte:head>
-	{@html atomOneDark}
-</svelte:head>
+	let { children } = $props();
+</script>
 
 {@render children()}
