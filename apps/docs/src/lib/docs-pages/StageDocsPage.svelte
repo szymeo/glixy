@@ -52,10 +52,8 @@
 					</h4>
 					<p class="text-sm text-gray-600">
 						Enable web worker mode for improved performance by offloading
-						rendering to a web worker. When <code>true</code>
-						, uses an offscreen canvas with PixiJS WebWorkerAdapter. Default is
-						<code>false</code>
-						.
+						rendering to a web worker. When <code>true</code>, uses an offscreen
+						canvas with PixiJS WebWorkerAdapter. Default is <code>false</code>.
 					</p>
 				</div>
 
@@ -99,10 +97,9 @@
 						<span class="text-sm text-gray-500">(number, optional)</span>
 					</h4>
 					<p class="text-sm text-gray-600">
-						Background color of the canvas as a hex number (e.g., <code>
-							0x1099bb
-						</code>
-						).
+						Background color of the canvas as a hex number (e.g., <code
+							>0x1099bb</code
+						>).
 					</p>
 				</div>
 
@@ -135,10 +132,9 @@
 						<span class="text-sm text-gray-500">(boolean, optional)</span>
 					</h4>
 					<p class="text-sm text-gray-600">
-						Enable antialiasing for smoother graphics. Default is <code>
-							false
-						</code>
-						.
+						Enable antialiasing for smoother graphics. Default is <code
+							>false</code
+						>.
 					</p>
 				</div>
 
@@ -149,10 +145,8 @@
 					</h4>
 					<p class="text-sm text-gray-600">
 						Enable web worker mode for improved performance by offloading
-						rendering to a web worker. When <code>true</code>
-						, uses an offscreen canvas with PixiJS WebWorkerAdapter. Default is
-						<code>false</code>
-						.
+						rendering to a web worker. When <code>true</code>, uses an offscreen
+						canvas with PixiJS WebWorkerAdapter. Default is <code>false</code>.
 					</p>
 				</div>
 			</div>

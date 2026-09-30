@@ -165,16 +165,14 @@
 					</p>
 					<ul class="mt-2 list-inside list-disc text-xs text-gray-500">
 						<li>
-							<strong>fill</strong>
-							: Stretch to fill exactly (may distort)
+							<strong>fill</strong>: Stretch to fill exactly (may distort)
 						</li>
 						<li>
-							<strong>cover</strong>
-							: Scale to cover entire area (may crop)
+							<strong>cover</strong>: Scale to cover entire area (may crop)
 						</li>
 						<li>
-							<strong>contain</strong>
-							: Scale to fit within area (may have empty space)
+							<strong>contain</strong>: Scale to fit within area (may have empty
+							space)
 						</li>
 					</ul>
 				</div>

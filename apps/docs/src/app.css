@@ -9,8 +9,9 @@ html {
 	width: 100%;
 	height: 100%;
 	/* // make font stack */
-	font-family: 'Overlock', ui-sans-serif, system-ui, sans-serif,
-		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+	font-family:
+		'Overlock', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+		'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
 @layer components {

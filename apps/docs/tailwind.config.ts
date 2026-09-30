@@ -18,10 +18,10 @@ export default {
 				sm: { max: '639px' },
 				// => @media (max-width: 639px) { ... }
 			},
-		},
-		transitionProperty: {
-			height: 'height',
-			width: 'width',
+			transitionProperty: {
+				height: 'height',
+				width: 'width',
+			},
 		},
 	},
 
