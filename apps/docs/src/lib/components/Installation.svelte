@@ -6,7 +6,7 @@
 
 <HighlightAuto
 	class="code-snippet"
-	code={`npm install glixy # suck it off in npm
+	code={`npm install glixy
 
 yarn add glixy # or yarn
 

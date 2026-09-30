@@ -8,14 +8,10 @@
 <div class="mx-auto h-full w-11/12 max-w-5xl py-10">
 	<div class="mb-8 sm:px-2">
 		<Header>
-			<p class="text-lg font-semibold text-slate-500/80">
-				Experience the comfort of building 2D WebGL interfaces worth <span
-					class="font-bold italic text-purple-600"
-				>
-					sucking off
-				</span>
-				to a friend.
-			</p>
+			<h1 class="text-lg font-semibold text-slate-500/80">
+				2D WebGL scenes as
+				<span class="font-bold italic text-purple-600">Svelte components</span>
+			</h1>
 		</Header>
 	</div>
 
@@ -30,7 +26,7 @@
 		>
 			Next Chapter -&gt;
 
-			<p class="text-base text-gray-500">Just suck it off (Installation)</p>
+			<p class="text-base text-gray-500">Installation</p>
 		</a>
 	</div>
 
