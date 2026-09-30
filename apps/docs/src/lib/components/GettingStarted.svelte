@@ -6,10 +6,11 @@
 	import { Stage, Sprite } from 'glixy';
 	import { GETTING_STARTED_CODE_SNIPPET } from '$lib/code-snippets';
 
-	let x = $state(10);
-	let y = $state(10);
-	let speedX = $state(10);
-	let speedY = $state(10);
+	// Fractions of the host size, so 0.5 starts the bunny centred.
+	let x = $state(0.5);
+	let y = $state(0.5);
+	let positionX = $state(0.5);
+	let positionY = $state(0.5);
 	let updatePositionIntervalMS = $state(1000);
 	let visible = $state(true);
 
@@ -23,15 +24,15 @@
 	});
 
 	$effect(() => {
-		speedX = Math.random();
-		speedY = Math.random();
+		positionX = Math.random();
+		positionY = Math.random();
 
-		const speedyInterval = setInterval(() => {
-			speedX = Math.random();
-			speedY = Math.random();
+		const positionInterval = setInterval(() => {
+			positionX = Math.random();
+			positionY = Math.random();
 		}, updatePositionIntervalMS);
 
-		return () => clearInterval(speedyInterval);
+		return () => clearInterval(positionInterval);
 	});
 </script>
 
@@ -110,14 +111,16 @@
         {x}
         {y}
       />`,
-					`let x = $state(10);
-  let y = $state(10);
+					`let x = $state(100);
+  let y = $state(100);
 
   $effect(() => {
-    setInterval(() => {
-      x = Math.random();
-      y = Math.random();
+    const interval = setInterval(() => {
+      x = Math.random() * 300;
+      y = Math.random() * 300;
     }, 1000);
+
+    return () => clearInterval(interval);
   });`,
 				)}
 			/>
@@ -143,14 +146,16 @@
         x={x * hostWidth}
         y={y * hostHeight}
       />`,
-					`let x = $state(10);
-  let y = $state(10);
-  
+					`let x = $state(0.5);
+  let y = $state(0.5);
+
   $effect(() => {
-    setInterval(() => {
+    const interval = setInterval(() => {
       x = Math.random();
       y = Math.random();
     }, 1000);
+
+    return () => clearInterval(interval);
   });`,
 				)}
 			>
@@ -225,24 +230,24 @@
 					`<Sprite
         anchor={{ x: 0.5, y: 0.5 }}
         texture="/bunny.png"
-        x={speedX * hostWidth}
-        y={speedY * hostHeight}
+        x={positionX * hostWidth}
+        y={positionY * hostHeight}
       />`,
-					`let speedX = $state(10);
-  let speedY = $state(10);
+					`let positionX = $state(0.5);
+  let positionY = $state(0.5);
   let updatePositionIntervalMS = $state(1000);
   let visible = $state(true);
-    
-  $effect(() => {
-    speedX = Math.random();
-    speedY = Math.random();
 
-    const speedyInterval = setInterval(() => {
-      speedX = Math.random();
-      speedY = Math.random();
+  $effect(() => {
+    positionX = Math.random();
+    positionY = Math.random();
+
+    const positionInterval = setInterval(() => {
+      positionX = Math.random();
+      positionY = Math.random();
     }, updatePositionIntervalMS);
 
-    return () => clearInterval(speedyInterval);
+    return () => clearInterval(positionInterval);
   });`,
 				)}
 			>
@@ -256,8 +261,8 @@
 							<Sprite
 								anchor={{ x: 0.5, y: 0.5 }}
 								texture="/bunny.png"
-								x={speedX * hostWidth}
-								y={speedY * hostHeight}
+								x={positionX * hostWidth}
+								y={positionY * hostHeight}
 							/>
 						{/if}
 					</Stage>

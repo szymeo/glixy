@@ -1,6 +1,7 @@
 {
-	"name": "",
-	"short_name": "",
+	"name": "Glixy",
+	"short_name": "Glixy",
+	"description": "2D WebGL scenes as Svelte components.",
 	"icons": [
 		{
 			"src": "/android-chrome-192x192.png",

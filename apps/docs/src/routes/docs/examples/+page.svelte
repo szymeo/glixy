@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { untrack } from 'svelte';
 	import DocsPageSection from '$lib/components/atoms/DocsPageSection.svelte';
 	import Example from '$lib/components/atoms/Example.svelte';
 	import { Stage, Sprite } from 'glixy';
@@ -10,7 +11,9 @@
 		const targetOpacity = visible ? 1 : 0;
 		const steps = 10;
 		const stepDuration = 1000 / 60;
-		const currentOpacity = opacity;
+		// Read without tracking: the interval below writes `opacity`, so a tracked
+		// read would restart this effect on every step and it would never settle.
+		const currentOpacity = untrack(() => opacity);
 		const opacityDifference = targetOpacity - currentOpacity;
 
 		const keyframes = Array.from({ length: steps }, (_, i) => {

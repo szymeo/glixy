@@ -47,18 +47,6 @@
 
 				<div class="rounded-lg border p-4">
 					<h4 class="mb-2 font-semibold">
-						<code>worker</code>
-						<span class="text-sm text-gray-500">(boolean, bindable)</span>
-					</h4>
-					<p class="text-sm text-gray-600">
-						Enable web worker mode for improved performance by offloading
-						rendering to a web worker. When <code>true</code>, uses an offscreen
-						canvas with PixiJS WebWorkerAdapter. Default is <code>false</code>.
-					</p>
-				</div>
-
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
 						<code>mounted</code>
 						<span class="text-sm text-gray-500">(boolean, bindable)</span>
 					</h4>
