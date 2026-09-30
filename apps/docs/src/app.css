@@ -2,35 +2,256 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-body,
-html {
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	height: 100%;
-	/* // make font stack */
-	font-family: 'Overlock', ui-sans-serif, system-ui, sans-serif,
-		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+@layer base {
+	:root {
+		color-scheme: light;
+	}
+
+	html {
+		/* Reserve the scrollbar's space so short and long pages centre alike. */
+		scrollbar-gutter: stable;
+		-webkit-text-size-adjust: 100%;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-rendering: optimizeLegibility;
+		font-optical-sizing: auto;
+		/* cv01: open digit 1, ss03: rounded quotes and commas. */
+		font-feature-settings:
+			'cv01' 1,
+			'ss03' 1;
+	}
+
+	body {
+		@apply bg-surface font-sans text-ink;
+
+		font-synthesis: none;
+		letter-spacing: -0.01em;
+	}
+
+	h1,
+	h2,
+	h3 {
+		text-wrap: balance;
+	}
+
+	p {
+		text-wrap: pretty;
+	}
+
+	code,
+	pre,
+	kbd {
+		@apply font-mono;
+
+		font-feature-settings: normal;
+		letter-spacing: 0;
+	}
+
+	::selection {
+		@apply bg-ink text-white;
+	}
+
+	:focus-visible {
+		@apply rounded-[4px] outline outline-2 outline-offset-2 outline-ink/40;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+			scroll-behavior: auto !important;
+		}
+	}
 }
 
 @layer components {
+	/* --- Controls ------------------------------------------------------ */
+
 	.btn {
-		@apply inline-flex h-10 items-center justify-center whitespace-nowrap rounded-full border border-transparent px-4 font-medium shadow-sm;
+		@apply inline-flex h-10 shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full px-5 text-sm font-medium transition-colors duration-150;
 	}
 
-	.icon-btn {
-		@apply flex h-10 w-10 items-center justify-center rounded-full shadow;
+	.btn-sm {
+		@apply h-8 px-3.5 text-[13px];
 	}
 
 	.btn-primary {
-		@apply bg-slate-700 text-white hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-purple-600;
+		@apply bg-ink text-white hover:bg-[#3a3a3e];
 	}
 
-	.code-snippet {
-		@apply relative max-w-full overflow-hidden overflow-x-auto rounded-2xl border border-gray-300 bg-gray-100;
-
-		& > code.hljs {
-			@apply bg-gray-100 p-8;
-		}
+	.btn-secondary {
+		@apply border border-line-strong bg-surface-raised text-ink hover:bg-surface-sunken;
 	}
+
+	.icon-btn {
+		@apply inline-flex size-8 shrink-0 items-center justify-center rounded-lg text-ink-faint transition-colors duration-150 hover:text-ink;
+	}
+
+	/* --- Surfaces ------------------------------------------------------ */
+
+	.card {
+		@apply rounded-xl border border-line bg-surface-raised;
+	}
+
+	/* A panel sitting on a stage backdrop: the page's product shots. */
+	.panel {
+		@apply overflow-hidden rounded-xl bg-surface-raised shadow-[0_32px_64px_-24px_rgba(28,28,30,0.18)] ring-1 ring-line;
+	}
+
+	/* Reference props read as one ruled list, not a stack of cards. */
+	.prop-list {
+		@apply border-t border-line;
+	}
+
+	.prop-card {
+		@apply border-b border-line py-4;
+	}
+
+	/* --- Code ---------------------------------------------------------- */
+
+	.code-block {
+		@apply overflow-hidden rounded-xl border border-line bg-surface-raised;
+	}
+
+	.code-block pre,
+	.code-panel pre {
+		@apply m-0 bg-transparent;
+	}
+
+	.code-block code.hljs,
+	.code-panel code.hljs {
+		@apply block overflow-x-auto bg-transparent p-4 text-[13px] leading-[1.625];
+
+		tab-size: 2;
+	}
+
+	/* --- Docs typography ----------------------------------------------- */
+
+	.doc-title {
+		@apply text-4xl font-medium tracking-[-0.03em];
+	}
+
+	.doc-h2 {
+		@apply text-xl font-medium tracking-[-0.02em];
+	}
+
+	.doc-body {
+		@apply text-[15px] leading-7 text-ink-muted;
+	}
+
+	.doc-link {
+		@apply text-ink underline decoration-line-strong decoration-1 underline-offset-4 transition-colors hover:decoration-ink-faint;
+	}
+}
+
+@layer utilities {
+	/* Inline code inside prose, not inside a .code-block. */
+	.code-inline {
+		@apply rounded bg-[#efeff1] px-1 py-0.5 font-mono text-[0.875em] text-ink;
+	}
+
+	/* Numbers that report something: mono, medium, no tracking. */
+	.font-figure {
+		@apply font-mono font-medium;
+
+		letter-spacing: 0;
+	}
+
+	/* Diagonal hairlines on an 8px pitch: a band that ends the page without
+	   adding one more solid rule. */
+	.hatch {
+		background-image: repeating-linear-gradient(
+			225deg,
+			theme('colors.line.DEFAULT') 0 1px,
+			transparent 0 50%
+		);
+		background-size: 8px 8px;
+	}
+
+	/* The light a panel stands in: a soft spot behind it and a floor that
+	   darkens toward the bottom, with a little grain so it reads as a
+	   surface rather than a gradient. */
+	.stage-backdrop {
+		background:
+			radial-gradient(
+				56% 70% at var(--spot, 50% 100%),
+				rgba(28, 28, 30, 0.07),
+				transparent
+			),
+			linear-gradient(
+				var(--floor, 180deg),
+				theme('colors.surface.DEFAULT') 8%,
+				#ececee 100%
+			);
+	}
+
+	.stage-backdrop::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+		background-size: 180px 180px;
+		mix-blend-mode: soft-light;
+		opacity: 0.5;
+	}
+}
+
+/*
+ * Syntax colours: Logdash's hues taken down to the 600-700 steps so every
+ * token clears AA on white. Geist Mono has no italic, so comments are only
+ * dimmed.
+ */
+.hljs {
+	@apply text-ink;
+}
+
+.hljs-keyword,
+.hljs-literal,
+.hljs-name,
+.hljs-doctag,
+.hljs-bullet,
+.hljs-deletion {
+	color: #dc2626;
+}
+
+.hljs-title,
+.hljs-section {
+	color: #a21caf;
+}
+
+.hljs-attr,
+.hljs-link,
+.hljs-selector-id,
+.hljs-selector-class {
+	color: #2563eb;
+}
+
+.hljs-type,
+.hljs-built_in,
+.hljs-number,
+.hljs-symbol,
+.hljs-selector-tag {
+	color: #c2410c;
+}
+
+.hljs-string,
+.hljs-meta,
+.hljs-attribute {
+	color: #8a5a44;
+}
+
+.hljs-subst,
+.hljs-regexp,
+.hljs-template-variable,
+.hljs-addition {
+	color: #15803d;
+}
+
+.hljs-comment,
+.hljs-quote {
+	color: #737379;
 }

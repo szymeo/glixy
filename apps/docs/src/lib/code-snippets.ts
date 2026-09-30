@@ -40,9 +40,9 @@ export const GETTING_STARTED_CODE_SNIPPET = (
   let host: HTMLElement | null = $state(null);${scripts ? `\n  ${scripts}` : ''}
 </script>
 
-<div bind:this={host} style="background-color: #111111;">
+<div bind:this={host} class="w-full h-96">
   {#if host}
-    <Stage {host} background="#111111">
+    <Stage {host} background="#f4f4f5">
       ${children}
     </Stage>
   {:else}

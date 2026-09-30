@@ -6,7 +6,10 @@
 	import { Stage, Video } from 'glixy';
 </script>
 
-<DocsPage title="Video">
+<DocsPage
+	title="Video"
+	lede="Video draws a video file into the scene, scaled and masked to the size you give it."
+>
 	<DocsPageSection>
 		{#snippet title()}
 			Overview
@@ -24,7 +27,7 @@
 					hostWidth: number,
 					hostHeight: number,
 				)}
-					<Stage {host} background="#1f2937" antialias={true}>
+					<Stage {host} background="#f4f4f5" antialias={true}>
 						<Video
 							anchor={{ x: 0, y: 0 }}
 							scale={{ x: 1, y: 1 }}
@@ -50,131 +53,176 @@
 			The Video component accepts the following properties:
 		{/snippet}
 		{#snippet children()}
-			<div class="space-y-4">
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>texture</code>
-						<span class="text-sm text-gray-500">(string, required)</span>
+			<div class="prop-list">
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">texture</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							string, required
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Path to the video file. Supports MP4, WebM, and other common video
 						formats.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>x</code>
-						<span class="text-sm text-gray-500">(number, default: 0)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">x</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, default 0
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						X position of the video in pixels.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>y</code>
-						<span class="text-sm text-gray-500">(number, default: 0)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">y</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, default 0
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Y position of the video in pixels.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>z</code>
-						<span class="text-sm text-gray-500">(number, default: 0)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">z</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, default 0
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Z-index for layering. Higher values appear on top.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>width</code>
-						<span class="text-sm text-gray-500">(number, default: 0)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">width</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, default 0
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Width of the video display area. If 0, uses the original video
 						width.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>height</code>
-						<span class="text-sm text-gray-500">(number, default: 0)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">height</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, default 0
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Height of the video display area. If 0, uses the original video
 						height.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>rotation</code>
-						<span class="text-sm text-gray-500">(number, default: 0)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">rotation</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, default 0
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">Rotation angle in radians.</p>
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
+						Rotation angle in radians.
+					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>opacity</code>
-						<span class="text-sm text-gray-500">(number, default: 1)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">opacity</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, default 1
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Opacity value between 0 (transparent) and 1 (opaque).
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>scale</code>
-						<span class="text-sm text-gray-500">
-							(object, default: &#123;x: 1, y: 1&#125;)
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">scale</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							object, default &#123;x: 1, y: 1&#125;
 						</span>
 					</h4>
-					<p class="text-sm text-gray-600">Scale factor for the video.</p>
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
+						Scale factor for the video.
+					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>anchor</code>
-						<span class="text-sm text-gray-500">
-							(object, default: &#123;x: 0, y: 0&#125;)
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">anchor</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							object, default &#123;x: 0, y: 0&#125;
 						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
-						Anchor point for transformations. <code>
-							&#123;x: 0.5, y: 0.5&#125;
-						</code>
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
+						Anchor point for transformations.
+						<code class="code-inline">&#123;x: 0.5, y: 0.5&#125;</code>
 						centers the anchor.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>loop</code>
-						<span class="text-sm text-gray-500">
-							(boolean, default: undefined)
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">loop</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							boolean, default undefined
 						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Whether the video should loop automatically when it reaches the end.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>muted</code>
-						<span class="text-sm text-gray-500">(boolean, default: true)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">muted</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							boolean, default true
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Whether the video audio should be muted. Defaults to true to avoid
 						autoplay issues.
 					</p>
@@ -185,59 +233,79 @@
 
 	<DocsPageSection>
 		{#snippet title()}
-			Interaction Props
+			Interaction props
 		{/snippet}
 		{#snippet description()}
 			The Video component supports mouse and pointer interactions:
 		{/snippet}
 		{#snippet children()}
-			<div class="space-y-4">
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>onpointerover</code>
-						<span class="text-sm text-gray-500">(function)</span>
+			<div class="prop-list">
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">onpointerover</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							function
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Called when the pointer enters the video area.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>onpointerout</code>
-						<span class="text-sm text-gray-500">(function)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">onpointerout</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							function
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Called when the pointer leaves the video area.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>onpointerdown</code>
-						<span class="text-sm text-gray-500">(function)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">onpointerdown</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							function
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Called when the pointer is pressed down on the video.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>onpointermove</code>
-						<span class="text-sm text-gray-500">(function)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">onpointermove</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							function
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Called when the pointer moves over the video.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>onpointerup</code>
-						<span class="text-sm text-gray-500">(function)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">onpointerup</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							function
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Called when the pointer is released over the video.
 					</p>
 				</div>
@@ -247,36 +315,58 @@
 
 	<DocsPageSection>
 		{#snippet title()}
-			Usage Notes
+			Usage notes
 		{/snippet}
 		{#snippet description()}
 			Important considerations when using the Video component:
 		{/snippet}
 		{#snippet children()}
-			<ul class="list-inside list-disc space-y-2 text-sm text-gray-600">
-				<li>Video must be placed inside a Stage or Container</li>
-				<li>
-					Videos are automatically scaled to fit within the specified width and
-					height while maintaining aspect ratio
+			<ul class="space-y-1.5 text-sm leading-6 text-ink-muted">
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>Video must be placed inside a Stage or Container.</span>
 				</li>
-				<li>
-					The video is masked to the exact dimensions specified, cropping any
-					overflow
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>
+						Videos are automatically scaled to fit within the specified width
+						and height while maintaining aspect ratio.
+					</span>
 				</li>
-				<li>
-					Videos start playing immediately when loaded and restart when the loop
-					ends (if loop is enabled)
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>
+						The video is masked to the exact dimensions specified, cropping any
+						overflow.
+					</span>
 				</li>
-				<li>
-					Audio is muted by default to prevent autoplay policy issues in
-					browsers
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>
+						Videos start playing immediately when loaded and restart when the
+						loop ends, if loop is enabled.
+					</span>
 				</li>
-				<li>
-					Video loading is asynchronous - the video will appear once it's fully
-					loaded
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>
+						Audio is muted by default to prevent autoplay policy issues in
+						browsers.
+					</span>
 				</li>
-				<li>
-					Supported formats depend on browser capabilities (MP4, WebM, etc.)
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>
+						Video loading is asynchronous, so the video appears once it is fully
+						loaded.
+					</span>
+				</li>
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>
+						Supported formats depend on browser capabilities, such as MP4 and
+						WebM.
+					</span>
 				</li>
 			</ul>
 		{/snippet}

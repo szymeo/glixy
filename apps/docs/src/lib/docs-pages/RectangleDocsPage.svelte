@@ -6,16 +6,18 @@
 	import { Rectangle, Stage } from 'glixy';
 </script>
 
-<DocsPage title="Rectangle">
+<DocsPage
+	title="Rectangle"
+	lede="Rectangle draws a rectangular shape with a fill, a border, and optional rounded corners."
+>
 	<DocsPageSection>
 		{#snippet title()}
 			Overview
 		{/snippet}
 		{#snippet description()}
-			The Rectangle component draws rectangular shapes with customizable
-			dimensions, colors, borders, and corner radius. It's perfect for creating
-			UI elements, backgrounds, buttons, and geometric designs in your Glixy
-			application.
+			Rectangle draws rectangular shapes with configurable dimensions, colors,
+			borders, and corner radius. Use it for UI elements, backgrounds, buttons,
+			and geometric designs.
 		{/snippet}
 
 		{#snippet children()}
@@ -25,7 +27,7 @@
 					hostWidth: number,
 					hostHeight: number,
 				)}
-					<Stage {host} background="#1f2937" antialias={true}>
+					<Stage {host} background="#f4f4f5" antialias={true}>
 						<Rectangle
 							x={hostWidth / 2 - 100}
 							y={hostHeight / 2 - 75}
@@ -46,155 +48,221 @@
 			Props
 		{/snippet}
 		{#snippet description()}
-			The Rectangle component accepts the following properties:
+			Rectangle accepts the following properties.
 		{/snippet}
 		{#snippet children()}
-			<div class="space-y-4">
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>width</code>
-						<span class="text-sm text-gray-500">(number, required)</span>
+			<div class="prop-list">
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">width</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, required
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">Width of the rectangle in pixels.</p>
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
+						Width of the rectangle in pixels.
+					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>height</code>
-						<span class="text-sm text-gray-500">(number, required)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">height</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, required
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Height of the rectangle in pixels.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>x</code>
-						<span class="text-sm text-gray-500">(number, default: 0)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">x</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, default 0
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						X position of the rectangle in pixels.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>y</code>
-						<span class="text-sm text-gray-500">(number, default: 0)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">y</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, default 0
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Y position of the rectangle in pixels.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>z</code>
-						<span class="text-sm text-gray-500">(number, default: 0)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">z</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, default 0
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Z-index for layering. Higher values appear on top.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>rotation</code>
-						<span class="text-sm text-gray-500">(number, default: 0)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">rotation</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, default 0
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">Rotation angle in radians.</p>
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
+						Rotation angle in radians.
+					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>anchor</code>
-						<span class="text-sm text-gray-500">(number, default: 0)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">anchor</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, default 0
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Absolute anchor point for transformations.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>scale</code>
-						<span class="text-sm text-gray-500">
-							(object, default: &#123;x: 1, y: 1&#125;)
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">scale</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							object, default &#123;x: 1, y: 1&#125;
 						</span>
 					</h4>
-					<p class="text-sm text-gray-600">Scale factor for the rectangle.</p>
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
+						Scale factor for the rectangle.
+					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>background</code>
-						<span class="text-sm text-gray-500">
-							(object, default: &#123;color: 0, opacity: 1&#125;)
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">background</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							object, default &#123;color: 0, opacity: 1&#125;
 						</span>
 					</h4>
-					<p class="text-sm text-gray-600">Background fill configuration:</p>
-					<ul
-						class="mt-2 list-inside list-disc space-y-1 text-xs text-gray-500"
-					>
-						<li>
-							<strong>color</strong>
-							(number): Fill color as hex number (e.g., 0xff0000 for red)
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
+						Background fill configuration.
+					</p>
+					<ul class="mt-2 space-y-1.5 text-sm leading-6 text-ink-muted">
+						<li class="flex gap-2">
+							<span class="text-ink-faint">-</span>
+							<span>
+								<code class="code-inline">color</code>
+								number. Fill color as a hex number, for example 0xff0000 for red.
+							</span>
 						</li>
-						<li>
-							<strong>opacity</strong>
-							(number): Fill opacity between 0 and 1
+						<li class="flex gap-2">
+							<span class="text-ink-faint">-</span>
+							<span>
+								<code class="code-inline">opacity</code>
+								number. Fill opacity between 0 and 1.
+							</span>
 						</li>
 					</ul>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>border</code>
-						<span class="text-sm text-gray-500">
-							(object, default: &#123;color: 0, width: 0, rounded: false,
-							opacity: 1&#125;)
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">border</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							object, default &#123;color: 0, width: 0, rounded: false, opacity:
+							1&#125;
 						</span>
 					</h4>
-					<p class="text-sm text-gray-600">Border configuration:</p>
-					<ul
-						class="mt-2 list-inside list-disc space-y-1 text-xs text-gray-500"
-					>
-						<li>
-							<strong>color</strong>
-							(number): Border color as hex number
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
+						Border configuration.
+					</p>
+					<ul class="mt-2 space-y-1.5 text-sm leading-6 text-ink-muted">
+						<li class="flex gap-2">
+							<span class="text-ink-faint">-</span>
+							<span>
+								<code class="code-inline">color</code>
+								number. Border color as a hex number.
+							</span>
 						</li>
-						<li>
-							<strong>width</strong>
-							(number): Border width in pixels
+						<li class="flex gap-2">
+							<span class="text-ink-faint">-</span>
+							<span>
+								<code class="code-inline">width</code>
+								number. Border width in pixels.
+							</span>
 						</li>
-						<li>
-							<strong>rounded</strong>
-							(boolean): Whether border ends are rounded
+						<li class="flex gap-2">
+							<span class="text-ink-faint">-</span>
+							<span>
+								<code class="code-inline">rounded</code>
+								boolean. Whether border ends are rounded.
+							</span>
 						</li>
-						<li>
-							<strong>opacity</strong>
-							(number): Border opacity between 0 and 1
+						<li class="flex gap-2">
+							<span class="text-ink-faint">-</span>
+							<span>
+								<code class="code-inline">opacity</code>
+								number. Border opacity between 0 and 1.
+							</span>
 						</li>
 					</ul>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>cornerRadius</code>
-						<span class="text-sm text-gray-500">(number, default: 0)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">cornerRadius</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, default 0
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Corner radius in pixels for rounded rectangles.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>cursor</code>
-						<span class="text-sm text-gray-500">(string, default: "auto")</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">cursor</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							string, default auto
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						CSS cursor style when hovering over the rectangle.
 					</p>
 				</div>
@@ -204,59 +272,79 @@
 
 	<DocsPageSection>
 		{#snippet title()}
-			Interaction Props
+			Interaction props
 		{/snippet}
 		{#snippet description()}
-			The Rectangle component supports mouse and pointer interactions:
+			Rectangle supports mouse and pointer interactions.
 		{/snippet}
 		{#snippet children()}
-			<div class="space-y-4">
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>onpointerover</code>
-						<span class="text-sm text-gray-500">(function)</span>
+			<div class="prop-list">
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">onpointerover</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							function, optional
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Called when the pointer enters the rectangle area.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>onpointerout</code>
-						<span class="text-sm text-gray-500">(function)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">onpointerout</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							function, optional
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Called when the pointer leaves the rectangle area.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>onpointerdown</code>
-						<span class="text-sm text-gray-500">(function)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">onpointerdown</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							function, optional
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Called when the pointer is pressed down on the rectangle.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>onpointermove</code>
-						<span class="text-sm text-gray-500">(function)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">onpointermove</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							function, optional
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Called when the pointer moves over the rectangle.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>onpointerup</code>
-						<span class="text-sm text-gray-500">(function)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">onpointerup</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							function, optional
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Called when the pointer is released over the rectangle.
 					</p>
 				</div>
@@ -266,29 +354,50 @@
 
 	<DocsPageSection>
 		{#snippet title()}
-			Usage Notes
+			Usage notes
 		{/snippet}
 		{#snippet description()}
-			Important considerations when using the Rectangle component:
+			Things worth knowing when using Rectangle.
 		{/snippet}
 		{#snippet children()}
-			<ul class="list-inside list-disc space-y-2 text-sm text-gray-600">
-				<li>Rectangle must be placed inside a Stage or Container</li>
-				<li>Width and height are required properties</li>
-				<li>
-					Colors are specified as hexadecimal numbers (e.g., 0xff0000 for red)
+			<ul class="space-y-1.5 text-sm leading-6 text-ink-muted">
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>Rectangle must be placed inside a Stage or Container.</span>
 				</li>
-				<li>Border width of 0 means no border will be drawn</li>
-				<li>
-					Corner radius creates rounded corners - higher values create more
-					rounded corners
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>Width and height are required.</span>
 				</li>
-				<li>
-					Use opacity values to create transparent or semi-transparent effects
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>
+						Colors are specified as hexadecimal numbers, for example 0xff0000
+						for red.
+					</span>
 				</li>
-				<li>
-					Interactions automatically make the rectangle interactive - no
-					additional setup needed
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>A border width of 0 means no border is drawn.</span>
+				</li>
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>
+						Corner radius rounds the corners. Higher values round them more.
+					</span>
+				</li>
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>
+						Opacity values create transparent or semi-transparent effects.
+					</span>
+				</li>
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>
+						Passing an interaction handler makes the rectangle interactive. No
+						additional setup is needed.
+					</span>
 				</li>
 			</ul>
 		{/snippet}

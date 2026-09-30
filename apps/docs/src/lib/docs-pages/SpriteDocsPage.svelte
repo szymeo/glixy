@@ -6,17 +6,19 @@
 	import { Sprite, Stage } from 'glixy';
 </script>
 
-<DocsPage title="Sprite">
+<DocsPage
+	title="Sprite"
+	lede="Sprite draws an image or texture on the stage, with control over position, size, fit, opacity, and pointer input."
+>
 	<DocsPageSection>
 		{#snippet title()}
 			Overview
 		{/snippet}
 
 		{#snippet description()}
-			The Sprite component displays images and textures in your Glixy
-			application. It supports various image formats and provides powerful
-			features like object fitting, transformations, interactions, and opacity
-			control.
+			Sprite displays images and textures in a Glixy application. It supports
+			common image formats and provides object fitting, transformations,
+			interactions, and opacity control.
 		{/snippet}
 
 		{#snippet children()}
@@ -26,7 +28,7 @@
 					hostWidth: number,
 					hostHeight: number,
 				)}
-					<Stage {host} background="#1f2937" antialias={true}>
+					<Stage {host} background="#f4f4f5" antialias={true}>
 						<Sprite
 							anchor={{ x: 0.5, y: 0.5 }}
 							texture="/bunny.png"
@@ -44,137 +46,189 @@
 		{#snippet title()}
 			Props
 		{/snippet}
+
 		{#snippet description()}
-			The Sprite component accepts the following properties:
+			The Sprite component accepts the following properties.
 		{/snippet}
+
 		{#snippet children()}
-			<div class="space-y-4">
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>texture</code>
-						<span class="text-sm text-gray-500">(string, required)</span>
+			<div class="prop-list">
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">texture</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							string, required
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Path to the image file. Supports PNG, JPG, GIF, and other common
 						image formats.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>x</code>
-						<span class="text-sm text-gray-500">(number, default: 0)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">x</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, default 0
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						X position of the sprite in pixels.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>y</code>
-						<span class="text-sm text-gray-500">(number, default: 0)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">y</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, default 0
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Y position of the sprite in pixels.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>zIndex</code>
-						<span class="text-sm text-gray-500">(number, default: 0)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">zIndex</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, default 0
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Z-index for layering. Higher values appear on top.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>width</code>
-						<span class="text-sm text-gray-500">(number, default: 0)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">width</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, default 0
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Width of the sprite. If 0, uses the original image width.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>height</code>
-						<span class="text-sm text-gray-500">(number, default: 0)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">height</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, default 0
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Height of the sprite. If 0, uses the original image height.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>rotation</code>
-						<span class="text-sm text-gray-500">(number, default: 0)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">rotation</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, default 0
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">Rotation angle in radians.</p>
-				</div>
-
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>opacity</code>
-						<span class="text-sm text-gray-500">(number, default: 1)</span>
-					</h4>
-					<p class="text-sm text-gray-600">
-						Opacity value between 0 (transparent) and 1 (opaque).
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
+						Rotation angle in radians.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>scale</code>
-						<span class="text-sm text-gray-500">
-							(object, default: &#123;x: 1, y: 1&#125;)
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">opacity</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, default 1
 						</span>
 					</h4>
-					<p class="text-sm text-gray-600">Scale factor for the sprite.</p>
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
+						Opacity value between 0, transparent, and 1, opaque.
+					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>anchor</code>
-						<span class="text-sm text-gray-500">
-							(object, default: &#123;x: 0, y: 0&#125;)
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">scale</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							object, default &#123;x: 1, y: 1&#125;
 						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
-						Relative anchor point for transformations. <code>
-							&#123;x: 0.5, y: 0.5&#125;
-						</code>
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
+						Scale factor for the sprite.
+					</p>
+				</div>
+
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">anchor</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							object, default &#123;x: 0, y: 0&#125;
+						</span>
+					</h4>
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
+						Relative anchor point for transformations.
+						<code class="code-inline">&#123;x: 0.5, y: 0.5&#125;</code>
 						centers the anchor.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>objectFit</code>
-						<span class="text-sm text-gray-500">
-							("fill" | "cover" | "contain", default: "fill")
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">objectFit</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							"fill" | "cover" | "contain", default "fill"
 						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
-						How the image should be resized to fit the specified dimensions:
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
+						How the image is resized to fit the specified dimensions.
 					</p>
-					<ul class="mt-2 list-inside list-disc text-xs text-gray-500">
-						<li>
-							<strong>fill</strong>
-							: Stretch to fill exactly (may distort)
+					<ul class="mt-2 space-y-1.5 text-sm leading-6 text-ink-muted">
+						<li class="flex gap-2">
+							<span class="text-ink-faint">-</span>
+							<span>
+								<code class="code-inline">fill</code>
+								stretches to fill exactly, which may distort the image.
+							</span>
 						</li>
-						<li>
-							<strong>cover</strong>
-							: Scale to cover entire area (may crop)
+						<li class="flex gap-2">
+							<span class="text-ink-faint">-</span>
+							<span>
+								<code class="code-inline">cover</code>
+								scales to cover the entire area, which may crop the image.
+							</span>
 						</li>
-						<li>
-							<strong>contain</strong>
-							: Scale to fit within area (may have empty space)
+						<li class="flex gap-2">
+							<span class="text-ink-faint">-</span>
+							<span>
+								<code class="code-inline">contain</code>
+								scales to fit within the area, which may leave empty space.
+							</span>
 						</li>
 					</ul>
 				</div>
@@ -184,59 +238,81 @@
 
 	<DocsPageSection>
 		{#snippet title()}
-			Interaction Props
+			Interaction props
 		{/snippet}
+
 		{#snippet description()}
-			The Sprite component supports mouse and pointer interactions:
+			Sprite supports mouse and pointer interactions.
 		{/snippet}
+
 		{#snippet children()}
-			<div class="space-y-4">
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>onpointerover</code>
-						<span class="text-sm text-gray-500">(function)</span>
+			<div class="prop-list">
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">onpointerover</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							function
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Called when the pointer enters the sprite area.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>onpointerout</code>
-						<span class="text-sm text-gray-500">(function)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">onpointerout</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							function
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Called when the pointer leaves the sprite area.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>onpointerdown</code>
-						<span class="text-sm text-gray-500">(function)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">onpointerdown</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							function
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Called when the pointer is pressed down on the sprite.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>onpointermove</code>
-						<span class="text-sm text-gray-500">(function)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">onpointermove</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							function
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Called when the pointer moves over the sprite.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>onpointerup</code>
-						<span class="text-sm text-gray-500">(function)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">onpointerup</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							function
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
 						Called when the pointer is released over the sprite.
 					</p>
 				</div>
@@ -246,18 +322,40 @@
 
 	<DocsPageSection>
 		{#snippet title()}
-			Usage Notes
+			Usage notes
 		{/snippet}
+
 		{#snippet description()}
-			Important considerations when using the Sprite component:
+			Things to keep in mind when using Sprite.
 		{/snippet}
+
 		{#snippet children()}
-			<ul class="list-inside list-disc space-y-2 text-sm text-gray-600">
-				<li>Sprite must be placed inside a Stage or Container</li>
-				<li>The texture path should be accessible from your application</li>
-				<li>Use objectFit to control how images are resized</li>
-				<li>Interactions automatically make the sprite interactive</li>
-				<li>Anchor points affect rotation and scaling behavior</li>
+			<ul class="space-y-1.5 text-sm leading-6 text-ink-muted">
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>Sprite must be placed inside a Stage or Container.</span>
+				</li>
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>
+						The texture path has to be reachable from your application.
+					</span>
+				</li>
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>
+						Use <code class="code-inline">objectFit</code>
+						to control how images are resized.
+					</span>
+				</li>
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>Passing any pointer handler makes the sprite interactive.</span>
+				</li>
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>Anchor points affect rotation and scaling behaviour.</span>
+				</li>
 			</ul>
 		{/snippet}
 	</DocsPageSection>
