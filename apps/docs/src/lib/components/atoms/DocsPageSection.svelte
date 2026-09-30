@@ -3,20 +3,26 @@
 
 	type Props = {
 		title: Snippet;
-		description: Snippet;
+		description?: Snippet;
 		children?: Snippet;
 		code?: Snippet;
 	};
+
 	const { title, description, children, code }: Props = $props();
 </script>
 
-<div class="mb-14 mt-8">
-	<h2 class="mb-4 text-2xl">{@render title()}</h2>
-	<p class="mb-4 text-base text-slate-600">{@render description()}</p>
+<section class="mb-14 scroll-mt-24">
+	<h2 class="doc-h2 mb-3">{@render title()}</h2>
+
+	{#if description}
+		<p class="doc-body mb-5 max-w-prose">{@render description()}</p>
+	{/if}
+
 	{#if code}
 		{@render code()}
 	{/if}
+
 	{#if children}
 		{@render children()}
 	{/if}
-</div>
+</section>

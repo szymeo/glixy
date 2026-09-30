@@ -1,16 +1,17 @@
 <script lang="ts">
-	import { HighlightAuto } from 'svelte-highlight';
+	import CodeBlock from './atoms/CodeBlock.svelte';
 	import DocsPage from './atoms/DocsPage.svelte';
 	import DocsPageSection from './atoms/DocsPageSection.svelte';
 	import Example from './atoms/Example.svelte';
 	import { Stage, Sprite } from 'glixy';
 	import { GETTING_STARTED_CODE_SNIPPET } from '$lib/code-snippets';
 
-	// Fractions of the host size, so 0.5 starts the bunny centred.
+	// x and y are fractions of the host box, so 0.5 starts the bunny centred
+	// rather than parked off-screen until the first tick.
 	let x = $state(0.5);
 	let y = $state(0.5);
-	let positionX = $state(0.5);
-	let positionY = $state(0.5);
+	let posX = $state(0.5);
+	let posY = $state(0.5);
 	let updatePositionIntervalMS = $state(1000);
 	let visible = $state(true);
 
@@ -24,33 +25,42 @@
 	});
 
 	$effect(() => {
-		positionX = Math.random();
-		positionY = Math.random();
+		posX = Math.random();
+		posY = Math.random();
 
 		const positionInterval = setInterval(() => {
-			positionX = Math.random();
-			positionY = Math.random();
+			posX = Math.random();
+			posY = Math.random();
 		}, updatePositionIntervalMS);
 
 		return () => clearInterval(positionInterval);
 	});
 </script>
 
-<DocsPage title="Getting Started">
+<DocsPage
+	title="Getting Started"
+	lede="Go from an empty stage to a sprite that follows Svelte state, in five steps."
+>
 	<DocsPageSection>
 		{#snippet title()}
-			1. Creating a Stage
+			<span
+				class="mb-1.5 block font-mono text-[12.5px] font-normal text-ink-faint"
+			>
+				Step 1
+			</span>
+			Create a stage
 		{/snippet}
 
 		{#snippet description()}
-			The <i class="font-semibold text-purple-600">Stage</i>
-			component is the root of your WebGL PixiJS application. It creates a canvas
-			element and appends it to the host element.
+			<code class="code-inline">Stage</code>
+			is the root of a Glixy application. It creates a canvas, appends it to the
+			element you pass as
+			<code class="code-inline">host</code>, and keeps the canvas sized to that
+			host. Children only render once the renderer has finished starting up.
 		{/snippet}
 
 		{#snippet code()}
-			<HighlightAuto
-				class="code-snippet"
+			<CodeBlock
 				code={GETTING_STARTED_CODE_SNIPPET(
 					'Stage',
 					`<!-- rendered contents will go there -->`,
@@ -61,21 +71,24 @@
 
 	<DocsPageSection>
 		{#snippet title()}
-			2. Rendering stuff
+			<span
+				class="mb-1.5 block font-mono text-[12.5px] font-normal text-ink-faint"
+			>
+				Step 2
+			</span>
+			Render a sprite
 		{/snippet}
 
 		{#snippet description()}
-			Now that we have a stage, let's render some stuff on it. We can use the <i
-				class="font-semibold text-purple-600"
-			>
+			With a stage in place, put something on it. <code class="code-inline">
 				Sprite
-			</i>
-			component to render an image.
+			</code>
+			loads an image and draws it at the coordinates you give it. Coordinates are
+			pixels, measured from the top left of the stage.
 		{/snippet}
 
 		{#snippet code()}
-			<HighlightAuto
-				class="code-snippet"
+			<CodeBlock
 				code={GETTING_STARTED_CODE_SNIPPET(
 					'Sprite, Stage',
 					`<Sprite
@@ -90,20 +103,25 @@
 
 	<DocsPageSection>
 		{#snippet title()}
-			3. Updating stuff
+			<span
+				class="mb-1.5 block font-mono text-[12.5px] font-normal text-ink-faint"
+			>
+				Step 3
+			</span>
+			Update the sprite
 		{/snippet}
 
 		{#snippet description()}
-			Render loop underneath won't run if there are no updates to render, but
-			once we update the <code>x</code>
+			Glixy stops the PixiJS ticker and only redraws when something actually
+			changed, so an idle scene costs nothing. Assign a new
+			<code class="code-inline">x</code>
 			or
-			<code>y</code>
-			properties, the render loop will run and update the position of the sprite.
+			<code class="code-inline">y</code>
+			and the next frame draws the sprite in its new position.
 		{/snippet}
 
 		{#snippet code()}
-			<HighlightAuto
-				class="code-snippet"
+			<CodeBlock
 				code={GETTING_STARTED_CODE_SNIPPET(
 					'Sprite, Stage',
 					`<Sprite
@@ -129,11 +147,18 @@
 
 	<DocsPageSection>
 		{#snippet title()}
-			4. Result
+			<span
+				class="mb-1.5 block font-mono text-[12.5px] font-normal text-ink-faint"
+			>
+				Step 4
+			</span>
+			Result
 		{/snippet}
 
 		{#snippet description()}
-			You should see a bunny moving around the stage.
+			The three steps together. The bunny moves to a new spot once a second.
+			Scaling the coordinates by the host size keeps it inside the stage at any
+			width.
 		{/snippet}
 
 		{#snippet children()}
@@ -164,7 +189,7 @@
 					hostWidth: number,
 					hostHeight: number,
 				)}
-					<Stage {host} background="#1f2937" antialias={true}>
+					<Stage {host} background="#f4f4f5" antialias={true}>
 						<Sprite
 							anchor={{ x: 0.5, y: 0.5 }}
 							texture="/bunny.png"
@@ -179,12 +204,18 @@
 
 	<DocsPageSection>
 		{#snippet title()}
-			5. Bonus (some magic)
+			<span
+				class="mb-1.5 block font-mono text-[12.5px] font-normal text-ink-faint"
+			>
+				Step 5
+			</span>
+			Drive the scene from HTML
 		{/snippet}
 
 		{#snippet description()}
-			What if we were able to connect HTML rendered content with WebGL rendered
-			content?
+			The scene is plain Svelte state, so ordinary HTML controls can drive it.
+			These buttons change the tick interval and mount or unmount the sprite; no
+			renderer API is involved.
 		{/snippet}
 
 		{#snippet children()}
@@ -195,56 +226,59 @@
 							100,
 							updatePositionIntervalMS - 100,
 						))}
-					class="btn btn-primary"
+					class="btn btn-secondary btn-sm"
 				>
 					Faster
 				</button>
 
-				<span class="text-white">
-					1 tick per {updatePositionIntervalMS / 1000} second(s)
+				<span class="font-figure text-[13px] text-ink-muted">
+					One tick every {(updatePositionIntervalMS / 1000).toFixed(1)}s
 				</span>
+
 				<button
 					onclick={() =>
 						(updatePositionIntervalMS = Math.min(
 							5000,
 							updatePositionIntervalMS + 100,
 						))}
-					class="btn btn-primary"
+					class="btn btn-secondary btn-sm"
 				>
 					Slower
 				</button>
 
-				<button onclick={() => (visible = !visible)} class="btn btn-primary">
-					<span class="mr-1">Toggle visibility</span>
-					{#if visible}
-						<span>👀</span>
-					{:else}
-						<span>🙈</span>
-					{/if}
+				<button
+					onclick={() => (visible = !visible)}
+					class="btn btn-secondary btn-sm"
+					aria-pressed={!visible}
+				>
+					{visible ? 'Hide sprite' : 'Show sprite'}
 				</button>
 			{/snippet}
+
 			<Example
 				{controls}
 				code={GETTING_STARTED_CODE_SNIPPET(
 					'Sprite, Stage',
-					`<Sprite
-        anchor={{ x: 0.5, y: 0.5 }}
-        texture="/bunny.png"
-        x={positionX * hostWidth}
-        y={positionY * hostHeight}
-      />`,
-					`let positionX = $state(0.5);
-  let positionY = $state(0.5);
+					`{#if visible}
+        <Sprite
+          anchor={{ x: 0.5, y: 0.5 }}
+          texture="/bunny.png"
+          x={posX * hostWidth}
+          y={posY * hostHeight}
+        />
+      {/if}`,
+					`let posX = $state(0.5);
+  let posY = $state(0.5);
   let updatePositionIntervalMS = $state(1000);
   let visible = $state(true);
 
   $effect(() => {
-    positionX = Math.random();
-    positionY = Math.random();
+    posX = Math.random();
+    posY = Math.random();
 
     const positionInterval = setInterval(() => {
-      positionX = Math.random();
-      positionY = Math.random();
+      posX = Math.random();
+      posY = Math.random();
     }, updatePositionIntervalMS);
 
     return () => clearInterval(positionInterval);
@@ -256,13 +290,13 @@
 					hostWidth: number,
 					hostHeight: number,
 				)}
-					<Stage {host} background="#1f2937" antialias={true}>
+					<Stage {host} background="#f4f4f5" antialias={true}>
 						{#if visible}
 							<Sprite
 								anchor={{ x: 0.5, y: 0.5 }}
 								texture="/bunny.png"
-								x={positionX * hostWidth}
-								y={positionY * hostHeight}
+								x={posX * hostWidth}
+								y={posY * hostHeight}
 							/>
 						{/if}
 					</Stage>

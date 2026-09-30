@@ -3,12 +3,15 @@
 		STAGE_CODE_SNIPPET,
 		STAGE_WORKER_CODE_SNIPPET,
 	} from '$lib/code-snippets';
+	import CodeBlock from '$lib/components/atoms/CodeBlock.svelte';
 	import DocsPage from '$lib/components/atoms/DocsPage.svelte';
 	import DocsPageSection from '$lib/components/atoms/DocsPageSection.svelte';
-	import { HighlightAuto } from 'svelte-highlight';
 </script>
 
-<DocsPage title="Stage">
+<DocsPage
+	title="Stage"
+	lede="Stage is the root element that boots a PixiJS application and renders every Glixy element inside it."
+>
 	<DocsPageSection>
 		{#snippet title()}
 			Overview
@@ -20,7 +23,7 @@
 			component.
 		{/snippet}
 		{#snippet code()}
-			<HighlightAuto class="code-snippet" code={STAGE_CODE_SNIPPET} />
+			<CodeBlock code={STAGE_CODE_SNIPPET} />
 		{/snippet}
 	</DocsPageSection>
 
@@ -33,108 +36,142 @@
 			plus the following:
 		{/snippet}
 		{#snippet children()}
-			<div class="space-y-4">
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>host</code>
-						<span class="text-sm text-gray-500">(HTMLElement, required)</span>
+			<div class="prop-list">
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">host</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							HTMLElement, required
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
-						The DOM element that will contain the PixiJS canvas. The Stage will
-						automatically resize to fit this container.
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
+						The DOM element that will contain the PixiJS canvas. The Stage
+						resizes to fit this container.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>mounted</code>
-						<span class="text-sm text-gray-500">(boolean, bindable)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">worker</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							boolean, default false
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
-						A bindable property that becomes <code>true</code>
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
+						Render through a web worker instead of the main thread. Set it to
+						<code class="code-inline">true</code>
+						to use an offscreen canvas with the PixiJS WebWorkerAdapter.
+					</p>
+				</div>
+
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">mounted</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							boolean, bindable
+						</span>
+					</h4>
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
+						Becomes <code class="code-inline">true</code>
 						when the PixiJS Application is fully initialized and ready to render
 						child elements.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>width</code>
-						<span class="text-sm text-gray-500">(number, optional)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">width</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, optional
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
-						Initial width of the canvas. If not specified, will resize to the
-						host container.
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
+						Initial width of the canvas. If not specified, the canvas resizes to
+						the host container.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>height</code>
-						<span class="text-sm text-gray-500">(number, optional)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">height</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, optional
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
-						Initial height of the canvas. If not specified, will resize to the
-						host container.
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
+						Initial height of the canvas. If not specified, the canvas resizes
+						to the host container.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>backgroundColor</code>
-						<span class="text-sm text-gray-500">(number, optional)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">backgroundColor</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, optional
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
-						Background color of the canvas as a hex number (e.g., <code
-							>0x1099bb</code
-						>).
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
+						Background colour of the canvas, given as a hex number such as
+						<code class="code-inline">0x111111</code>
+						rather than a CSS colour string.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>backgroundAlpha</code>
-						<span class="text-sm text-gray-500">(number, optional)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">backgroundAlpha</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, optional
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
-						Background alpha/opacity value between 0 and 1.
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
+						Background opacity, between 0 and 1.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>resolution</code>
-						<span class="text-sm text-gray-500">(number, optional)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">resolution</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							number, optional
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
-						Rendering resolution. Defaults to <code>
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
+						Rendering resolution. Defaults to <code class="code-inline">
 							window.devicePixelRatio
 						</code>
 						for crisp rendering on high-DPI displays.
 					</p>
 				</div>
 
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>antialias</code>
-						<span class="text-sm text-gray-500">(boolean, optional)</span>
+				<div class="prop-card">
+					<h4
+						class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-medium"
+					>
+						<code class="code-inline">antialias</code>
+						<span class="font-mono text-[12.5px] font-normal text-ink-faint">
+							boolean, default false
+						</span>
 					</h4>
-					<p class="text-sm text-gray-600">
-						Enable antialiasing for smoother graphics. Default is <code
-							>false</code
-						>.
-					</p>
-				</div>
-
-				<div class="rounded-lg border p-4">
-					<h4 class="mb-2 font-semibold">
-						<code>worker</code>
-						<span class="text-sm text-gray-500">(boolean, optional)</span>
-					</h4>
-					<p class="text-sm text-gray-600">
-						Enable web worker mode for improved performance by offloading
-						rendering to a web worker. When <code>true</code>, uses an offscreen
-						canvas with PixiJS WebWorkerAdapter. Default is <code>false</code>.
+					<p class="mt-1.5 text-sm leading-6 text-ink-muted">
+						Enable antialiasing for smoother edges on drawn graphics.
 					</p>
 				</div>
 			</div>
@@ -143,74 +180,89 @@
 
 	<DocsPageSection>
 		{#snippet title()}
-			Web Worker Mode
+			Web worker mode
 		{/snippet}
 		{#snippet description()}
-			Enable high-performance rendering using web workers with the <code>
+			Move rendering off the main thread with the <code class="code-inline">
 				worker
 			</code>
-			property:
+			property.
 		{/snippet}
 		{#snippet code()}
-			<HighlightAuto class="code-snippet" code={STAGE_WORKER_CODE_SNIPPET} />
+			<CodeBlock code={STAGE_WORKER_CODE_SNIPPET} />
 		{/snippet}
 		{#snippet children()}
-			<div class="space-y-4">
-				<p class="text-sm text-gray-600">
-					When <code>worker={true}</code>
-					is set, the Stage component:
-				</p>
-				<ul class="list-inside list-disc space-y-2 text-sm text-gray-600">
-					<li>Uses PixiJS WebWorkerAdapter for offscreen rendering</li>
-					<li>
-						Transfers canvas control to an offscreen canvas for better
-						performance
-					</li>
-					<li>
-						Helps prevent blocking the main thread during intensive rendering
-						operations
-					</li>
-					<li>
-						Particularly beneficial for complex scenes with many animated
-						elements
-					</li>
-				</ul>
-			</div>
+			<p class="mb-3 mt-4 text-sm leading-6 text-ink-muted">
+				With web worker mode enabled, the Stage:
+			</p>
+			<ul class="space-y-1.5 text-sm leading-6 text-ink-muted">
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>Uses the PixiJS WebWorkerAdapter for offscreen rendering.</span>
+				</li>
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>Transfers canvas control to an offscreen canvas.</span>
+				</li>
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>
+						Avoids blocking the main thread during intensive rendering.
+					</span>
+				</li>
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>Suits complex scenes with many animated elements.</span>
+				</li>
+			</ul>
 		{/snippet}
 	</DocsPageSection>
 
 	<DocsPageSection>
 		{#snippet title()}
-			Usage Notes
+			Usage notes
 		{/snippet}
 		{#snippet description()}
-			Important considerations when using the Stage component:
+			Things to know when using the Stage component.
 		{/snippet}
 		{#snippet children()}
-			<ul class="list-inside list-disc space-y-2 text-sm text-gray-600">
-				<li>
-					The Stage component must be the root container for all other Glixy
-					elements
+			<ul class="space-y-1.5 text-sm leading-6 text-ink-muted">
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>
+						Stage must be the root container for all other Glixy elements.
+					</span>
 				</li>
-				<li>
-					Nested Stage components are not supported and will throw an error
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>Nested Stage components are not supported and throw.</span>
 				</li>
-				<li>
-					Always wait for the <code>mounted</code>
-					prop to be
-					<code>true</code>
-					before rendering child elements
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>
+						Wait for <code class="code-inline">mounted</code>
+						to be
+						<code class="code-inline">true</code>
+						before rendering child elements.
+					</span>
 				</li>
-				<li>
-					The canvas will automatically resize to match the host container
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>The canvas resizes to match the host container.</span>
 				</li>
-				<li>
-					The Stage uses a 60fps render loop that only updates when changes are
-					detected
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>
+						The Stage runs a 60fps render loop that only draws when something
+						changed.
+					</span>
 				</li>
-				<li>
-					Use <code>worker={true}</code>
-					for performance-critical applications with heavy rendering workloads
+				<li class="flex gap-2">
+					<span class="text-ink-faint">-</span>
+					<span>
+						Use <code class="code-inline">{'worker={true}'}</code>
+						for heavy rendering workloads.
+					</span>
 				</li>
 			</ul>
 		{/snippet}

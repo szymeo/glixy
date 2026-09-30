@@ -40,9 +40,9 @@ export const GETTING_STARTED_CODE_SNIPPET = (
   let host: HTMLElement | null = $state(null);${scripts ? `\n  ${scripts}` : ''}
 </script>
 
-<div bind:this={host} style="background-color: #111111;">
+<div bind:this={host} class="w-full h-96">
   {#if host}
-    <Stage {host} background="#111111">
+    <Stage {host} background="#f4f4f5">
       ${children}
     </Stage>
   {:else}
@@ -187,31 +187,3 @@ export const STAR_CODE_SNIPPET = `<script>
     <div>Loading stage...</div>
   {/if}
 </div>`;
-
-export const ROTATE_SPRITE_CODE_SNIPPET = `<script lang="ts">
-	import { Container, Sprite, Stage } from 'glixy';
-
-	// render loop will run only once when rotation changes
-	let rotation = $state(0);
-</script>
-
-{#snippet bunny(x: number, y: number)}
-	<Sprite
-		{rotation}
-		anchor={{ x: 0.5, y: 0.5 }}
-		texture="/bunny.png"
-		{x}
-		{y}
-	/>
-{/snippet}
-
-<button onclick={() => (rotation = Math.random() * 360)}>
-	Rotate!
-</button>
-
-<!-- host, hostHeight, hostWidth are passed from the parent component -->
-<Stage {host} background="#1f2937" antialias={true}>
-	<Container x={0} y={hostHeight / 2}>
-		{@render bunny(hostWidth / 2, 0)}
-	</Container>
-</Stage>`;
