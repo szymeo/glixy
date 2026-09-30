@@ -7,7 +7,7 @@
 </script>
 
 <div class="flex items-center justify-between">
-	<a href="/">
+	<a href="/" aria-label="Glixy home">
 		<Logo class="h-16 w-32" />
 	</a>
 
@@ -15,6 +15,7 @@
 		class="flex items-center justify-center gap-2 rounded-full bg-white p-2 pl-4 font-semibold text-slate-600 shadow-sm ring-1 ring-slate-200 transition-all hover:shadow-md sm:bg-transparent sm:pl-2 sm:shadow-none sm:ring-0 sm:hover:shadow-none"
 		href="https://github.com/szymeo/glixy"
 		target="_blank"
+		aria-label="Source Code on GitHub"
 	>
 		<span class="sm:hidden">Source Code</span>
 

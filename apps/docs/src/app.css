@@ -2,6 +2,11 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+html {
+	/* Reserve the scrollbar's space so short and long pages centre alike. */
+	scrollbar-gutter: stable;
+}
+
 body,
 html {
 	margin: 0;

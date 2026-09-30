@@ -5,7 +5,7 @@
 	import Footer from '$lib/components/Footer.svelte';
 </script>
 
-<div class="mx-auto h-full w-11/12 max-w-4xl py-10">
+<div class="mx-auto h-full w-11/12 max-w-5xl py-10">
 	<div class="mb-8 sm:px-2">
 		<Header>
 			<p class="text-lg font-semibold text-slate-500/80">
